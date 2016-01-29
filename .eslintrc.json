@@ -1,0 +1,7 @@
+{
+  "extends": [
+    "zeal",
+    "zeal/react"
+  ],
+  "root": true
+}
