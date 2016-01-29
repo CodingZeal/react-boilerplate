@@ -10,6 +10,10 @@ The boilerplate includes all of the tools that we're currently using in our Reac
 
 We assume some familiarity with the React/Redux ecosystem, including Babel and Webpack.
 
+## Notes of Interest
+
+* We include `flux-standard-action` to indicate that our intention is to use that format for our actions.  We don't currently import it anywhere, but if you're so inclined, you can use its `isFSA()` function to check your actions in tests or as a guard in the reducer returned from `createReducer()`.
+
 ## License
 
 Copyright (c) 2016 Zeal, LLC.  Licensed under the [MIT license](https://opensource.org/licenses/MIT).
