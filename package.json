@@ -1,0 +1,96 @@
+{
+  "name": "zeal-react-boilerplate",
+  "version": "0.0.1",
+  "description": "Zeal's React/Redux boilerplate setup",
+  "main": "index.js",
+  "scripts": {
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack/production.js",
+    "dev": "webpack-dev-server --config webpack/development.js --devtool eval --progress --colors --hot",
+    "lint": "eslint client/*",
+    "postinstall": "npm run build",
+    "test": "env NODE_PATH=$NODE_PATH:$PWD/client ./node_modules/.bin/mocha",
+    "test:debug": "./node_modules/.bin/karma start test/karma.conf.js",
+    "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodingZeal/react-boilerplate.git"
+  },
+  "homepage": "https://github.com/CodingZeal/react-boilerplate",
+  "bugs": {
+    "url": "https://github.com/CodingZeal/react-boilerplate/issues"
+  },
+  "author": "Randy Coulman <randy@codingzeal.com> (http://codingzeal.com)",
+  "license": "MIT",
+  "engines": {
+    "node": "5.3.0",
+    "npm": "3.3.12"
+  },
+  "private": true,
+  "dependencies": {
+    "babel": "^6.3.26",
+    "babel-core": "^6.3.26",
+    "babel-eslint": "^4.1.6",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "bootswatch": "^3.3.6",
+    "chai": "^3.4.1",
+    "css-loader": "^0.23.1",
+    "css-modules-require-hook": "^2.1.0",
+    "es6-promise": "^3.0.2",
+    "eslint": "^1.10.3",
+    "eslint-config-zeal": "^0.2.0",
+    "eslint-loader": "^1.2.0",
+    "eslint-plugin-react": "^3.13.1",
+    "exports-loader": "^0.6.2",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "flux-standard-action": "^0.6.0",
+    "history": "^1.17.0",
+    "imports-loader": "^0.6.5",
+    "jsx-chai": "^2.0.0",
+    "karma": "^0.13.17",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-cli": "^0.1.2",
+    "karma-mocha": "^0.2.1",
+    "karma-webpack": "^1.7.0",
+    "mocha": "^2.3.4",
+    "node-sass": "^3.4.2",
+    "ramda": "^0.19.1",
+    "react": "^0.14.5",
+    "react-addons-test-utils": "^0.14.5",
+    "react-bootstrap": "^0.28.1",
+    "react-css-modules": "^3.6.3",
+    "react-dom": "^0.14.5",
+    "react-hot-loader": "^1.3.0",
+    "react-redux": "^4.0.6",
+    "react-router": "^1.0.3",
+    "react-router-named-routes": "0.0.7",
+    "react-router-redux": "^2.1.0",
+    "redux": "^3.1.0",
+    "redux-devtools": "^3.0.2",
+    "redux-devtools-dock-monitor": "^1.0.1",
+    "redux-devtools-log-monitor": "^1.0.2",
+    "redux-form": "^4.1.2",
+    "redux-thunk": "^1.0.3",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "1.14.0",
+    "whatwg-fetch": "^0.11.0"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "es2015",
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-decorators-legacy"
+    ]
+  }
+}
