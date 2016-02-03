@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: [path.resolve(__dirname, '../client/index.js')],
@@ -11,7 +12,7 @@ module.exports = {
         loaders: ['babel']
       }, {
         test: /\.css/,
-        loader: 'file-loader?name=style.css'
+        loader: ExtractTextPlugin.extract('css')
       }
     ],
     preLoaders: [{
@@ -25,6 +26,9 @@ module.exports = {
     filename: 'client.js'
   },
   plugins: [
+    new ExtractTextPlugin('style.css', {
+      allChunks: true
+    }),
     new webpack.ProvidePlugin({
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     })
