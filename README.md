@@ -24,7 +24,7 @@ With React, jQuery is almost never necessary, so think twice before deciding to 
 
 However, sometimes we want to wrap a third-party component that uses jQuery.  In that case, we don't have much choice, so here's how to include jQuery and make it globally available.
 
-1. In [webpack/base.js](webpack/base.js), change:
+- In [webpack/base.js](webpack/base.js), change:
 ```javascript
 new webpack.ProvidePlugin({
   fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
@@ -41,7 +41,7 @@ new webpack.ProvidePlugin({
 
 This assumes that you've added jQuery to your `package.json` either directly or via another module.
 
-2. In [.eslintrc.json](.eslintrc.json), add:
+- In [.eslintrc.json](.eslintrc.json), add:
 ```json
 "env": {
   "jquery": true
