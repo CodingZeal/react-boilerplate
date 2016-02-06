@@ -8,6 +8,7 @@
     "dev": "webpack-dev-server --config webpack/development.js --devtool eval --progress --colors --hot",
     "lint": "eslint client/*",
     "postinstall": "npm run build",
+    "starterapp": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot",
     "test": "env NODE_PATH=$NODE_PATH:$PWD/client ./node_modules/.bin/mocha",
     "test:debug": "./node_modules/.bin/karma start test/karma.conf.js",
     "test:watch": "npm run test -- --watch"
