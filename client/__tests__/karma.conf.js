@@ -1,8 +1,8 @@
-const webpackConfig = require('../webpack/development.js')
+const webpackConfig = require('../../webpack/development.js')
 
 module.exports = config => {
   config.set({
-    basePath: '..',
+    basePath: '../..',
     browsers: ['Chrome'],
     singleRun: false,
     frameworks: ['chai', 'mocha'],
