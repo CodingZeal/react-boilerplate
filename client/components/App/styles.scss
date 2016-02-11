@@ -1,0 +1,11 @@
+.zeal {
+  background-color: #325559;
+  color: #D85226;
+}
+
+.heading {
+  composes: zeal;
+  margin: 50px;
+  padding: 50px;
+  text-align: center;
+}
