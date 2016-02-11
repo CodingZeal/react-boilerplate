@@ -12,9 +12,6 @@ config.module.loaders.push({
 })
 
 config.plugins.push(
-  new ExtractTextPlugin('client.css', {
-    allChunks: true
-  }),
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify('production')
