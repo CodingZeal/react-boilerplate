@@ -24,7 +24,7 @@ config.plugins.push(
   }),
   new webpack.optimize.UglifyJsPlugin({
     compressor: {
-      screw_ie8: true,
+      screw_ie8: true, // eslint-disable-line camelcase
       warnings: false
     },
     sourceMap: false
