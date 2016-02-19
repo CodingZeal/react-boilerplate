@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack/production.js",
-    "dev": "webpack-dev-server --config webpack/development.js --devtool eval --progress --colors --hot",
+    "dev": "webpack-dev-server --config webpack/development.js --devtool eval --progress --colors --hot --history-api-fallback",
     "lint": "eslint client/*",
     "postinstall": "npm run build",
-    "starterapp": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot",
+    "starterapp": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback",
     "test": "env NODE_PATH=$NODE_PATH:$PWD/client ./node_modules/.bin/mocha --opts client/__tests__/mocha.opts",
     "test:debug": "./node_modules/.bin/karma start client/__tests__/karma.conf.js",
     "test:watch": "npm run test -- --watch"
