@@ -34,7 +34,6 @@ module.exports = {
   },
   plugins: [
     extractCSS,
-    new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.ProvidePlugin({
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
