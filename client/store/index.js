@@ -18,8 +18,10 @@ const store = createStore(reducer, undefined,
   )
 )
 
-if (module.hot) {
-  module.hot.accept('../reducers', () => {
+const hotLoader = module.hot
+
+if (hotLoader) {
+  hotLoader.accept('../reducers', () => {
     const nextReducer =
       require('../reducers').default // eslint-disable-line global-require
 
