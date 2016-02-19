@@ -2,6 +2,10 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
+const extractCSS = new ExtractTextPlugin('vendor.css', {
+  allChunks: true
+})
+
 module.exports = {
   entry: [path.resolve(__dirname, '../client/index.js')],
   module: {
@@ -12,7 +16,7 @@ module.exports = {
         loaders: ['babel']
       }, {
         test: /\.css/,
-        loader: ExtractTextPlugin.extract('css')
+        loader: extractCSS.extract('css')
       }, {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
         loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
@@ -29,9 +33,7 @@ module.exports = {
     filename: 'client.js'
   },
   plugins: [
-    new ExtractTextPlugin('client.css', {
-      allChunks: true
-    }),
+    extractCSS,
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.ProvidePlugin({
