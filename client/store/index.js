@@ -3,7 +3,7 @@ import { createHistory } from 'history'
 import { syncHistory } from 'react-router-redux'
 import thunk from 'redux-thunk'
 
-import devToolsEnhancer from './devToolsEnhancer'
+import devToolsExtension from './devToolsExtension'
 
 export const history = createHistory()
 
@@ -11,10 +11,10 @@ const reduxRouterMiddleware = syncHistory(history)
 
 import reducer from 'reducers'
 
-const store = createStore(reducer, undefined,
+const store = createStore(reducer,
   compose(
     applyMiddleware(thunk, reduxRouterMiddleware),
-    devToolsEnhancer
+    devToolsExtension
   )
 )
 
