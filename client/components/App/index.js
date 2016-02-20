@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 
+import styles from './styles.scss'
+
 const propTypes = {
   children: PropTypes.element
 }
-
-import styles from './styles.scss'
 
 export default function App({ children }) {
   return (
