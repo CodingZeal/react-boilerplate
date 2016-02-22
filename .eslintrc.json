@@ -3,5 +3,8 @@
     "zeal",
     "zeal/react"
   ],
-  "root": true
+  "root": true,
+  "settings": {
+    "import/resolver": "webpack"
+  }
 }
