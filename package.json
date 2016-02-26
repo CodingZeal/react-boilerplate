@@ -55,7 +55,6 @@
     "flux-standard-action": "^0.6.0",
     "history": "^1.17.0",
     "imports-loader": "^0.6.5",
-    "jsx-chai": "^2.0.0",
     "karma": "^0.13.17",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.2",
