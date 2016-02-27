@@ -6,7 +6,7 @@
   "scripts": {
     "build": "NODE_ENV=production ./node_modules/.bin/webpack",
     "dev": "webpack-dev-server --devtool eval --progress --colors --hot --history-api-fallback",
-    "lint": "eslint 'client/**/*.js'",
+    "lint": "eslint 'client/**/*.js' && sass-lint -v",
     "postinstall": "npm run build",
     "starterapp": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback",
     "test": "env NODE_PATH=$NODE_PATH:$PWD/client ./node_modules/.bin/mocha --opts client/__tests__/mocha.opts",
@@ -78,6 +78,7 @@
     "redux-api-middleware": "^1.0.0-beta3",
     "redux-form": "^4.1.2",
     "redux-thunk": "^1.0.3",
+    "sass-lint": "^1.5.1",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
