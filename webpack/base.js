@@ -26,6 +26,10 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'eslint-loader'
+    }, {
+      test: /\.scss$/,
+      exclude: /node_modules/,
+      loader: 'sasslint-loader'
     }]
   },
   output: {
@@ -42,5 +46,8 @@ module.exports = {
   resolve: {
     root: path.resolve(__dirname, '../client'),
     extensions: ['', '.js']
+  },
+  sasslint: {
+    configFile: path.resolve(__dirname, '../.sass-lint.yml')
   }
 }
