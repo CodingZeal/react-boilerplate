@@ -1,6 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import { createHistory } from 'history'
 import { syncHistory } from 'react-router-redux'
+import { apiMiddleware } from 'redux-api-middleware'
 import thunk from 'redux-thunk'
 
 import devToolsExtension from './devToolsExtension'
@@ -12,7 +13,7 @@ const reduxRouterMiddleware = syncHistory(history)
 
 const store = createStore(reducer,
   compose(
-    applyMiddleware(thunk, reduxRouterMiddleware),
+    applyMiddleware(thunk, reduxRouterMiddleware, apiMiddleware),
     devToolsExtension
   )
 )
