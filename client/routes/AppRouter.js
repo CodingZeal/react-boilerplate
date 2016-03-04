@@ -1,11 +1,14 @@
 import React from 'react'
-import { Router } from 'react-router'
+import { browserHistory, Router } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
 import { FixNamedRoutesSupport as allowNames } from 'react-router-named-routes'
 
-import { history } from 'store'
 import routes from 'routes'
+import store from 'store'
 
 allowNames(routes)
+
+const history = syncHistoryWithStore(browserHistory, store)
 
 export default function AppRouter() {
   return (
