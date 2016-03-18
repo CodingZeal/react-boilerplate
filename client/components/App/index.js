@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import 'foundation-apps/dist/css/foundation-apps.css'
 
 import styles from './styles.scss'
 
