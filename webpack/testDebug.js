@@ -7,8 +7,10 @@ config.devServer = {
   port: '8081'
 }
 
+const index = path.resolve(__dirname, '../client/__tests__/index.js')
+
 config.entry = {
-  test: [`mocha!${path.resolve(__dirname, '../client/__tests__/index.js')}`]
+  test: [`mocha!${index}`]
 }
 
 config.module.loaders.push({
