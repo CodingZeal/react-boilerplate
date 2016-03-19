@@ -40,7 +40,6 @@
     "bootswatch": "^3.3.6",
     "chai": "^3.4.1",
     "css-loader": "^0.23.1",
-    "css-modules-require-hook": "^2.1.0",
     "es6-promise": "^3.0.2",
     "eslint": "^2.2.0",
     "eslint-config-zeal": "^0.5.1",
