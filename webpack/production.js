@@ -6,14 +6,14 @@ const extractSCSS = new ExtractTextPlugin('client.css', {
   allChunks: true
 })
 
-config.module.loaders.push({
-  test: /\.scss$/,
-  loader: extractSCSS.extract(
-    'style',
-    'css?modules&importLoaders=1' +
-      '&localIdentName=[local]__[hash:base64:5]!sass'
-  )
-})
+const scssLoaderIndex = config.module.loaders
+  .findIndex(loader => String(loader.test) === String(/\.scss$/))
+
+config.module.loaders[scssLoaderIndex].loader = extractSCSS.extract(
+  'style',
+  'css?modules&importLoaders=1' +
+    '&localIdentName=[local]__[hash:base64:5]!sass'
+)
 
 config.plugins.push(
   extractSCSS,
