@@ -7,7 +7,9 @@ const extractCSS = new ExtractTextPlugin('vendor.css', {
 })
 
 module.exports = {
-  entry: [path.resolve(__dirname, '../client/index.js')],
+  entry: {
+    client: [path.resolve(__dirname, '../client/index.js')]
+  },
   module: {
     loaders: [
       {
