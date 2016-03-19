@@ -1,5 +1,3 @@
-const nodeExternals = require('webpack-node-externals')
-
 const config = require('./base')
 
 config.module.loaders.push({
@@ -12,6 +10,5 @@ config.module.loaders.push({
 })
 
 config.target = 'node'
-config.externals = [nodeExternals()]
 
 module.exports = config

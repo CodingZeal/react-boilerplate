@@ -9,7 +9,7 @@
     "lint": "eslint 'client/**/*.js' && sass-lint -v",
     "postinstall": "npm run build",
     "starterapp": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback",
-    "test": "env NODE_PATH=$NODE_PATH:$PWD/client ./node_modules/.bin/mocha-webpack",
+    "test": "./node_modules/.bin/mocha-webpack",
     "test:debug": "webpack-dev-server --config webpack/testDebug.js --hot --inline",
     "test:watch": "npm run test -- --watch"
   },
@@ -81,7 +81,6 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9",
     "webpack-dev-server": "1.14.0",
-    "webpack-node-externals": "^1.0.0",
     "whatwg-fetch": "^0.11.0"
   },
   "babel": {
