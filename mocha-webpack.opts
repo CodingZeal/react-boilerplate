@@ -1,5 +1,5 @@
 --colors
 --require client/__tests__/setup.js
 --reporter spec
---webpack-config webpack/mocha.js
+--webpack-config webpack/test.js
 client/**/*-spec.js

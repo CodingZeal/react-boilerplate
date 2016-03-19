@@ -10,7 +10,7 @@
     "postinstall": "npm run build",
     "starterapp": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback",
     "test": "env NODE_PATH=$NODE_PATH:$PWD/client ./node_modules/.bin/mocha-webpack",
-    "test:debug": "webpack-dev-server --config webpack/test.js --hot --inline",
+    "test:debug": "webpack-dev-server --config webpack/testDebug.js --hot --inline",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {

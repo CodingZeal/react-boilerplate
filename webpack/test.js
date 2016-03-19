@@ -1,15 +1,6 @@
-const path = require('path')
+const nodeExternals = require('webpack-node-externals')
 
 const config = require('./base')
-
-config.devServer = {
-  host: 'localhost',
-  port: '8081'
-}
-
-config.entry = {
-  test: [`mocha!${path.resolve(__dirname, '../client/__tests__/index.js')}`]
-}
 
 config.module.loaders.push({
   test: /\.scss$/,
@@ -20,6 +11,7 @@ config.module.loaders.push({
   ]
 })
 
-config.output.publicPath = 'http://localhost:8081/'
+config.target = 'node'
+config.externals = [nodeExternals()]
 
 module.exports = config
