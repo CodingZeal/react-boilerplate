@@ -34,7 +34,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../public'),
-    filename: 'client.js'
+    filename: '[name].js'
   },
   plugins: [
     extractCSS,
