@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "zeal/mocha",
+    "zeal/chai"
+  ]
+}
