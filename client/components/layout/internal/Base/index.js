@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
 const propTypes = {
-  align: PropTypes.oneOf(['left', 'right']),
+  align: PropTypes.oneOf(['center', 'justify', 'left', 'right', 'spaced']),
   children: PropTypes.node,
   className: PropTypes.string,
   elementType: PropTypes.string.isRequired,
