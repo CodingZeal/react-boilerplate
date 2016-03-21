@@ -1,9 +1,15 @@
 import React from 'react'
 import expectReactShallow from 'expect-react-shallow'
+import { expect } from 'chai'
 
+import shallowRender from 'utils/shallowRender'
 import Base from '..'
 
 describe('Base', () => {
+  function className(component) {
+    return shallowRender(component).props.className
+  }
+
   it('renders the root element as a div by default', () => {
     expectReactShallow(<Base type='grid-block' />)
       .to.have.rendered(<div></div>)
@@ -20,41 +26,35 @@ describe('Base', () => {
   })
 
   it('converts the type prop to a foundation class name', () => {
-    expectReactShallow(<Base type='grid-block' />)
-      .to.have.exactly.rendered(<div className='grid-block' />)
+    expect(className(<Base type='grid-block' />)).to.include('grid-block')
   })
 
   it('converts the align prop to a foundation class name', () => {
-    expectReactShallow(<Base align='right' type='grid-block' />)
-      .to.have.rendered(<div className='grid-block align-right' />)
+    expect(className(<Base align='right' type='grid-block' />))
+      .to.include('align-right')
 
-    expectReactShallow(<Base align='left' type='grid-block' />)
-      .to.have.rendered(<div className='grid-block align-left' />)
+    expect(className(<Base align='left' type='grid-block' />))
+      .to.include('align-left')
   })
 
   it('converts the shrink prop to a foundation class name', () => {
-    expectReactShallow(<Base shrink type='grid-block' />)
-      .to.have.rendered(<div className='grid-block shrink' />)
+    expect(className(<Base shrink type='grid-block' />))
+      .to.include('shrink')
   })
 
   it('converts the vertical prop to a foundation class name', () => {
-    expectReactShallow(<Base vertical type='grid-block' />)
-      .to.have.rendered(<div className='grid-block vertical' />)
+    expect(className(<Base vertical type='grid-block' />))
+      .to.include('vertical')
   })
 
   it('combines multiple props into the correct foundation classes', () => {
-    expectReactShallow(
-      <Base shrink vertical align='right' type='grid-block' />
-    ).to.have.rendered(
-      <div className='grid-block align-right shrink vertical' />
-    )
+    expect(className(<Base shrink vertical align='right' type='grid-block' />))
+      .to.include('align-right shrink vertical')
   })
 
   it('merges the provided className with generated foundation classes', () => {
-    expectReactShallow(
+    expect(className(
       <Base align='right' className='foo bar' type='grid-block' />
-    ).to.have.rendered(
-      <div className='grid-block foo bar align-right' />
-    )
+    )).to.eq('grid-block foo bar align-right')
   })
 })
