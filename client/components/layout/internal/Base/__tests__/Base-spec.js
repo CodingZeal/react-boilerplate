@@ -4,9 +4,19 @@ import expectReactShallow from 'expect-react-shallow'
 import Base from '..'
 
 describe('Base', () => {
-  it('renders children within a div by default', () => {
+  it('renders the root element as a div by default', () => {
+    expectReactShallow(<Base type='grid-block' />)
+      .to.have.rendered(<div></div>)
+  })
+
+  it('renders the root element specified by elementType', () => {
+    expectReactShallow(<Base elementType='span' type='grid-block' />)
+      .to.have.rendered(<span></span>)
+  })
+
+  it('renders children within the root element', () => {
     expectReactShallow(<Base children={<h1>Test</h1>} type='grid-block' />)
-      .to.have.exactly.rendered(<div className='grid-block'><h1>Test</h1></div>)
+      .to.have.rendered(<div><h1>Test</h1></div>)
   })
 
   it('converts the type prop to a foundation class name', () => {
