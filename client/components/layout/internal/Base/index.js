@@ -16,8 +16,6 @@ const defaultProps = {
 }
 
 export default function Base(props) {
-  // Temporary workaround for: https://github.com/babel/babel-eslint/issues/249
-  /* eslint-disable no-use-before-define */
   const {
     align,
     children,
@@ -27,7 +25,7 @@ export default function Base(props) {
     type,
     vertical,
     ...otherProps
-  } = props /* eslint-enable no-use-before-define */
+  } = props
 
   const classNames = classnames(type, className, {
     [`align-${align}`]: align,
