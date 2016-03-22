@@ -1,5 +1,5 @@
 --colors
 --require client/__tests__/setup.js
 --reporter spec
---webpack-config webpack/test.js
+--webpack-config webpack.config.js
 client/**/*-spec.js

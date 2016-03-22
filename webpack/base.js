@@ -24,11 +24,14 @@ module.exports = {
             '&localIdentName=[path][local]__[hash:base64:5]!sass'
         ]
       }, {
-        test: /\.css/,
+        test: /\.css$/,
         loader: extractCSS.extract('css')
       }, {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
         loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
+      }, {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ],
     preLoaders: [{

@@ -9,8 +9,8 @@
     "lint": "eslint 'client/**/*.js' && sass-lint -v",
     "postinstall": "npm run build",
     "starterapp": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback",
-    "test": "./node_modules/.bin/mocha-webpack",
-    "test:debug": "webpack-dev-server --config webpack/testDebug.js --hot --inline",
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha-webpack",
+    "test:debug": "NODE_ENV=test-debug webpack-dev-server --hot --inline",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
@@ -55,6 +55,7 @@
     "foundation-apps": "^1.2.0",
     "history": "^1.17.0",
     "imports-loader": "^0.6.5",
+    "json-loader": "^0.5.4",
     "mocha": "^2.3.4",
     "mocha-loader": "^0.7.1",
     "mocha-webpack": "^0.1.0",
