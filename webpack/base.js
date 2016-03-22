@@ -7,7 +7,9 @@ const extractCSS = new ExtractTextPlugin('vendor.css', {
 })
 
 module.exports = {
-  entry: [path.resolve(__dirname, '../client/index.js')],
+  entry: {
+    client: [path.resolve(__dirname, '../client/index.js')]
+  },
   module: {
     loaders: [
       {
@@ -15,11 +17,21 @@ module.exports = {
         exclude: /node_modules/,
         loaders: ['babel']
       }, {
-        test: /\.css/,
+        test: /\.scss$/,
+        loaders: [
+          'style',
+          'css?modules&importLoaders=1' +
+            '&localIdentName=[path][local]__[hash:base64:5]!sass'
+        ]
+      }, {
+        test: /\.css$/,
         loader: extractCSS.extract('css')
       }, {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
         loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
+      }, {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ],
     preLoaders: [{
@@ -34,7 +46,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../public'),
-    filename: 'client.js'
+    filename: '[name].js'
   },
   plugins: [
     extractCSS,

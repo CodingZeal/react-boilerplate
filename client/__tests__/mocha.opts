@@ -1,3 +1,0 @@
-client/**/*-spec.js
---require client/__tests__/setup.js
---reporter spec
