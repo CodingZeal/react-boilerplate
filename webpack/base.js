@@ -21,7 +21,7 @@ module.exports = {
         loaders: [
           'style',
           'css?modules&importLoaders=1' +
-            '&localIdentName=[local]__[hash:base64:5]!sass'
+            '&localIdentName=[path][local]__[hash:base64:5]!sass'
         ]
       }, {
         test: /\.css/,
