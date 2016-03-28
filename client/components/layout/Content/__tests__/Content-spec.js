@@ -1,4 +1,3 @@
-import '__tests__/specHelper'
 import React from 'react'
 import expectReactShallow from 'expect-react-shallow'
 
