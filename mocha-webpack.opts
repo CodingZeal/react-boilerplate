@@ -1,4 +1,5 @@
 --colors
+--require client/__tests__/specHelper.js
 --reporter spec
 --webpack-config webpack.config.js
 client/**/*-spec.js
