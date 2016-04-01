@@ -60,7 +60,7 @@
     "json-loader": "^0.5.4",
     "mocha": "^2.3.4",
     "mocha-loader": "^0.7.1",
-    "mocha-webpack": "^0.2.0",
+    "mocha-webpack": "^0.3.0",
     "node-sass": "^3.4.2",
     "ramda": "^0.19.1",
     "react": "^0.14.5",
@@ -85,7 +85,6 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9",
     "webpack-dev-server": "1.14.0",
-    "webpack-node-externals": "^1.0.0",
     "whatwg-fetch": "^0.11.0"
   },
   "babel": {
