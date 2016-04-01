@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const SassLintPlugin = require('sasslint-webpack-plugin')
 
 const extractCSS = new ExtractTextPlugin('vendor.css', {
   allChunks: true
@@ -31,10 +32,6 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'eslint-loader'
-    }, {
-      test: /\.scss$/,
-      exclude: /node_modules/,
-      loader: 'sasslint-loader'
     }]
   },
   output: {
@@ -46,13 +43,14 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.ProvidePlugin({
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+    }),
+    new SassLintPlugin({
+      configFile: path.resolve(__dirname, '../.sass-lint.yml'),
+      glob: 'client/**/*.scss'
     })
   ],
   resolve: {
     root: path.resolve(__dirname, '../client'),
     extensions: ['', '.js']
-  },
-  sasslint: {
-    configFile: path.resolve(__dirname, '../.sass-lint.yml')
   }
 }
