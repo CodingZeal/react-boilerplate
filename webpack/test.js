@@ -1,5 +1,7 @@
 const config = require('./base')
 
+config.devtool = 'cheap-module-source-map'
+
 config.module.loaders.push({
   test: /\.scss$/,
   loaders: [
