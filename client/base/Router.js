@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { Router } from 'react-router'
+import { Router as ReactRouter } from 'react-router'
 import { FixNamedRoutesSupport as allowNames } from 'react-router-named-routes'
 
 import routes from 'routes'
@@ -10,10 +10,10 @@ const propTypes = {
   history: PropTypes.object.isRequired
 }
 
-export default function AppRouter({ history }) {
+export default function Router({ history }) {
   return (
-    <Router children={routes} history={history} />
+    <ReactRouter children={routes} history={history} />
   )
 }
 
-AppRouter.propTypes = propTypes
+Router.propTypes = propTypes

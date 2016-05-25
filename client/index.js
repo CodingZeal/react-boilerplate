@@ -5,8 +5,7 @@ import { Provider } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
-import AppRouter from 'routes/AppRouter'
-import configureStore from 'store/configureStore'
+import { Router, configureStore } from 'base'
 
 es6promise.polyfill()
 
@@ -16,7 +15,7 @@ const history = syncHistoryWithStore(browserHistory, store)
 document.addEventListener('DOMContentLoaded', () =>
   ReactDOM.render(
     <Provider store={store}>
-      <AppRouter history={history} />
+      <Router history={history} />
     </Provider>,
     document.getElementById('root')
   )
