@@ -75,7 +75,7 @@
     "redux-api-middleware": "^1.0.0-beta3",
     "redux-form": "^4.1.2",
     "redux-thunk": "^1.0.3",
-    "sass-lint": "^1.5.1",
+    "sass-lint": "^1.7.0",
     "sass-loader": "^3.1.2",
     "sasslint-webpack-plugin": "^1.0.2",
     "sinon": "^2.0.0-pre",
