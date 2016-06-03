@@ -1,0 +1,1 @@
+export sampleReducer from './reducers'

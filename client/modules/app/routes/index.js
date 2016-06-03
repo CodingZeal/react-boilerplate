@@ -3,8 +3,6 @@ import { Route } from 'react-router'
 
 import App from 'containers/App'
 
-const routes = (
+export default (
   <Route name='root' path='/' component={App} />
 )
-
-export default routes

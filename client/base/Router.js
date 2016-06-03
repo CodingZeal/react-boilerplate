@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react'
 import { Router as ReactRouter } from 'react-router'
 import { FixNamedRoutesSupport as allowNames } from 'react-router-named-routes'
 
-import routes from 'routes'
+import { appRoutes } from 'modules/app'
 
-allowNames(routes)
+allowNames(appRoutes)
 
 const propTypes = {
   history: PropTypes.object.isRequired
@@ -12,7 +12,7 @@ const propTypes = {
 
 export default function Router({ history }) {
   return (
-    <ReactRouter children={routes} history={history} />
+    <ReactRouter children={appRoutes} history={history} />
   )
 }
 

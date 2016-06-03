@@ -1,2 +1,2 @@
-export AppReducers from './reducers'
-export AppRoutes from './routes'
+export appReducer from './reducers'
+export appRoutes from './routes'

@@ -3,7 +3,7 @@ import { apiMiddleware } from 'redux-api-middleware'
 import thunk from 'redux-thunk'
 
 import devToolsExtension from './devToolsExtension'
-import reducer from 'reducers'
+import reducer from './reducer'
 
 export default function() {
   const store = createStore(reducer,
@@ -14,9 +14,9 @@ export default function() {
   )
 
   if (module.hot) {
-    module.hot.accept('../reducers', () => {
+    module.hot.accept('./reducer', () => {
       const nextReducer =
-        require('../reducers').default // eslint-disable-line global-require
+        require('./reducer').default // eslint-disable-line global-require
 
       store.replaceReducer(nextReducer)
     })
