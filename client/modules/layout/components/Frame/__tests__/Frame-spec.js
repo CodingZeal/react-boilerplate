@@ -1,7 +1,7 @@
 import React from 'react'
 import expectReactShallow from 'expect-react-shallow'
 
-import Base from '../../internal/Base'
+import Base from '../../Base'
 import Frame from '..'
 
 describe('Frame', () => {

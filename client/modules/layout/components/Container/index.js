@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import Base from '../internal/Base'
+import Base from '../Base'
 
 const propTypes = {
   children: PropTypes.node,
