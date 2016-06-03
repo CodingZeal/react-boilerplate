@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import 'foundation-apps/dist/css/foundation-apps.css'
 
-import styles from './styles.scss'
+import { Header } from 'modules/sample'
 
 const propTypes = {
   children: PropTypes.element
@@ -10,9 +10,7 @@ const propTypes = {
 export default function App({ children }) {
   return (
     <div>
-      <h1 className={styles.heading}>
-        Zeal React Boilerplate Test
-      </h1>
+      <Header />
 
       {children}
     </div>
