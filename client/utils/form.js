@@ -1,5 +1,6 @@
 import { head, map } from 'ramda'
 
+// eslint-disable-next-line import/prefer-default-export
 export function formApiAdapter(dispatch, actionCreator) {
   return (...args) =>
     new Promise((resolve, reject) => {
