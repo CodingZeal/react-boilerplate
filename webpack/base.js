@@ -41,9 +41,6 @@ module.exports = {
   plugins: [
     extractCSS,
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.ProvidePlugin({
-      fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
-    }),
     new SassLintPlugin({
       configFile: path.resolve(__dirname, '../.sass-lint.yml'),
       glob: 'client/**/*.scss'
