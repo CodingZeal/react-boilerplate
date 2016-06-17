@@ -59,7 +59,7 @@
     "json-loader": "^0.5.4",
     "mocha": "^2.3.4",
     "mocha-loader": "^0.7.1",
-    "mocha-webpack": "^0.3.0",
+    "mocha-webpack": "^0.4.0",
     "node-sass": "^3.7.0",
     "ramda": "^0.19.1",
     "react": "^0.14.5",
