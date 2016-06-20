@@ -12,11 +12,13 @@ es6promise.polyfill()
 const store = configureStore()
 const history = syncHistoryWithStore(browserHistory, store)
 
-document.addEventListener('DOMContentLoaded', () =>
+function renderApp() {
   ReactDOM.render(
     <Provider store={store}>
       <Router history={history} />
     </Provider>,
     document.getElementById('root')
   )
-)
+}
+
+document.addEventListener('DOMContentLoaded', renderApp)
