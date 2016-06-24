@@ -16,6 +16,13 @@
     "test:watch": "npm run test -- --watch --reporter min",
     "validate": "npm-run-all --parallel test lint"
   },
+  "config": {
+    "ghooks": {
+      "pre-push": "opt --out pre-push --exec 'npm run validate'",
+      "post-checkout": "opt --out post-checkout --exec 'npm install'",
+      "post-merge": "opt --out post-merge --exec 'npm install'"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CodingZeal/react-boilerplate.git"
@@ -88,6 +95,10 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "1.14.0"
+  },
+  "devDependencies": {
+    "ghooks": "^1.2.4",
+    "opt-cli": "^1.4.2"
   },
   "babel": {
     "presets": [
