@@ -1,16 +1,16 @@
 import { expect } from 'chai'
-import sinon from 'sinon'
+import td from 'testdouble'
 
 import { formApiAdapter } from '../form'
 
 describe('formApiAdapter', () => {
   const formValues = { name: 'NAME', age: 42 }
   const action = { type: 'SOME_ACTION' }
-  const dispatch = sinon.stub()
-  const actionCreator = sinon.stub()
+  const dispatch = td.func('dispatch')
+  const actionCreator = td.func('actionCreator')
 
   beforeEach(() => {
-    actionCreator.withArgs(formValues).returns(action)
+    td.when(actionCreator(formValues)).thenReturn(action)
   })
 
   context('on a successful API call', () => {
@@ -25,7 +25,7 @@ describe('formApiAdapter', () => {
     }
 
     beforeEach(() => {
-      dispatch.withArgs(action).returns(Promise.resolve(payload))
+      td.when(dispatch(action)).thenReturn(Promise.resolve(payload))
     })
 
     it('resolves with the api response', () => {
@@ -54,7 +54,7 @@ describe('formApiAdapter', () => {
       }
 
       beforeEach(() => {
-        dispatch.withArgs(action).returns(Promise.resolve(payload))
+        td.when(dispatch(action)).thenReturn(Promise.resolve(payload))
       })
 
       it('rejects with api error on failure', () => {
@@ -88,7 +88,7 @@ describe('formApiAdapter', () => {
       }
 
       beforeEach(() => {
-        dispatch.withArgs(action).returns(Promise.resolve(payload))
+        td.when(dispatch(action)).thenReturn(Promise.resolve(payload))
       })
 
       it('rejects the promise', () => {
