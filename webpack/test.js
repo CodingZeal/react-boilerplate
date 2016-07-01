@@ -1,7 +1,5 @@
 const config = require('./base')
 
-config.devtool = 'cheap-module-source-map'
-
 config.module.loaders.push({
   test: /\.scss$/,
   loaders: [
@@ -10,7 +8,5 @@ config.module.loaders.push({
     'sass'
   ]
 })
-
-config.target = 'node'
 
 module.exports = config

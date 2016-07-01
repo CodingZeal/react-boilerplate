@@ -9,9 +9,8 @@
     "lint": "NODE_ENV=production eslint 'client/**/*.js' --max-warnings 0 && sass-lint -v --max-warnings 0",
     "postinstall": "npm prune && npm run build",
     "starterapp": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback",
-    "test": "NODE_ENV=test ./node_modules/.bin/mocha-webpack",
-    "test:debug": "NODE_ENV=test-debug webpack-dev-server --hot --inline",
-    "test:watch": "npm run test -- --watch"
+    "test": "NODE_ENV=test karma start",
+    "test:watch": "npm test -- --auto-watch --no-single-run"
   },
   "repository": {
     "type": "git",
@@ -57,6 +56,11 @@
     "humps": "^1.1.0",
     "imports-loader": "^0.6.5",
     "json-loader": "^0.5.4",
+    "karma": "^1.1.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-mocha": "^1.1.1",
+    "karma-webpack": "^1.7.0",
     "mocha": "^2.5.3",
     "mocha-loader": "^0.7.1",
     "mocha-webpack": "^0.4.0",
