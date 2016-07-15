@@ -12,7 +12,12 @@ module.exports = function setKarmaConfig(config) {
     browsers: ['Chrome'],
     colors: true,
     concurrency: Infinity,
-    files: [testGlob],
+    files: [{
+      pattern: testGlob,
+      watched: false,
+      served: true,
+      included: true
+    }],
     // files: [testGlob, srcGlob],
     frameworks: ['mocha', 'chai-as-promised', 'chai'],
     logLevel: config.LOG_INFO,
