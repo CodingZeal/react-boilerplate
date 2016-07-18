@@ -1,6 +1,4 @@
 /* eslint-disable camelcase */
-import '__tests__/specHelper'
-import { expect } from 'chai'
 import { prop } from 'ramda'
 import sinon from 'sinon'
 

@@ -1,5 +1,3 @@
-import '__tests__/specHelper'
-import { expect } from 'chai'
 import sinon from 'sinon'
 
 import { formApiAdapter } from '../form'
