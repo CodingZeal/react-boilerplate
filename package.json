@@ -6,11 +6,14 @@
   "scripts": {
     "build": "NODE_ENV=production ./node_modules/.bin/webpack",
     "dev": "webpack-dev-server --devtool eval --progress --colors --hot --history-api-fallback",
-    "lint": "NODE_ENV=production eslint 'client/**/*.js' --max-warnings 0 && sass-lint -v --max-warnings 0",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:js": "NODE_ENV=production eslint 'client/**/*.js' --max-warnings 0",
+    "lint:sass": "NODE_ENV=production sass-lint -v --max-warnings 0",
     "postinstall": "npm prune && npm run build",
     "starterapp": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback",
     "test": "NODE_ENV=test karma start",
-    "test:watch": "npm test -- --auto-watch --no-single-run"
+    "test:watch": "npm test -- --auto-watch --no-single-run",
+    "validate": "npm-run-all --parallel test lint"
   },
   "repository": {
     "type": "git",
@@ -64,6 +67,7 @@
     "karma-webpack": "^1.7.0",
     "mocha": "^2.5.3",
     "node-sass": "^3.7.0",
+    "npm-run-all": "^2.2.2",
     "ramda": "^0.21.0",
     "react": "^15.1.0",
     "react-addons-test-utils": "^15.1.0",
