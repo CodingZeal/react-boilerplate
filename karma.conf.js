@@ -13,20 +13,7 @@ module.exports = function setKarmaConfig(config) {
     browsers: ['Chrome'],
     colors: true,
     concurrency: Infinity,
-    files: [
-      {
-        pattern: specHelper,
-        watched: false,
-        served: true,
-        included: true
-      },
-      {
-        pattern: testGlob,
-        watched: false,
-        served: true,
-        included: true
-      }
-    ],
+    files: [specHelper, testGlob].map(dontWatch),
     // files: [testGlob, srcGlob],
     frameworks: ['mocha', 'chai-as-promised', 'chai'],
     logLevel: config.LOG_INFO,
@@ -41,4 +28,13 @@ module.exports = function setKarmaConfig(config) {
     webpack: webpackConfig,
     webpackMiddleware: { noInfo: true }
   })
+}
+
+function dontWatch(pattern) {
+  return {
+    pattern,
+    included: true,
+    served: true,
+    watched: false
+  }
 }
