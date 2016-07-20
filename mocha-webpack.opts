@@ -1,6 +1,0 @@
---colors
---include client/__tests__/specHelper.js
---reporter spec
---require source-map-support/register
---webpack-config webpack.config.js
-client/**/*-spec.js

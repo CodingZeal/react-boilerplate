@@ -1,6 +1,5 @@
 import React from 'react'
 import expectReactShallow from 'expect-react-shallow'
-import { expect } from 'chai'
 
 import shallowRender from 'utils/shallowRender'
 import Base from '..'

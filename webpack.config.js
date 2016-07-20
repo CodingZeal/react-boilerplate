@@ -1,11 +1,11 @@
-function config() { // eslint-disable-line complexity
-  switch (process.env.NODE_ENV) { // eslint-disable-line no-process-env
+/* eslint complexity: [1, 3] */
+function config() {
+  // eslint-disable-next-line no-process-env
+  switch (process.env.NODE_ENV) {
     case 'production':
       return 'production'
     case 'test':
       return 'test'
-    case 'test-debug':
-      return 'testDebug'
     default:
       return 'development'
   }

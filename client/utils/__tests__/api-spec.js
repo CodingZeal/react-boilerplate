@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-import { expect } from 'chai'
 import { prop } from 'ramda'
 import td from 'testdouble'
 
