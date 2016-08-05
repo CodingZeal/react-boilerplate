@@ -3,7 +3,6 @@ const webpackConfig = require('./webpack.config')
 // eslint-disable-next-line no-process-env
 process.env.BABEL_ENV = 'test' // so we load the correct babel plugins
 const testGlob = '**/*-spec.js'
-const srcGlob = '**/*!(-spec).js'
 
 module.exports = function setKarmaConfig(config) {
   config.set({
@@ -29,8 +28,7 @@ module.exports = function setKarmaConfig(config) {
     logLevel: config.LOG_INFO,
     port: 9876,
     preprocessors: {
-      [testGlob]: 'webpack',
-      [srcGlob]: ['webpack']
+      [testGlob]: ['webpack']
     },
     reporters: ['mocha', 'coverage'],
     singleRun: true,
