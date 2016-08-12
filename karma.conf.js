@@ -2,6 +2,7 @@ const webpackConfig = require('./webpack.config')
 
 // eslint-disable-next-line no-process-env
 process.env.BABEL_ENV = 'test' // so we load the correct babel plugins
+const specHelper = '__tests__/specHelper.js'
 const testGlob = '**/*-spec.js'
 // const srcGlob = '**/*!(-spec).js'
 
@@ -12,17 +13,13 @@ module.exports = function setKarmaConfig(config) {
     browsers: ['Chrome'],
     colors: true,
     concurrency: Infinity,
-    files: [{
-      pattern: testGlob,
-      watched: false,
-      served: true,
-      included: true
-    }],
+    files: [specHelper, testGlob].map(dontWatch),
     // files: [testGlob, srcGlob],
     frameworks: ['mocha', 'chai-as-promised', 'chai'],
     logLevel: config.LOG_INFO,
     port: 9876,
     preprocessors: {
+      [specHelper]: ['webpack'],
       [testGlob]: ['webpack'] // ,
       // [srcGlob]: ['webpack']
     },
@@ -31,4 +28,13 @@ module.exports = function setKarmaConfig(config) {
     webpack: webpackConfig,
     webpackMiddleware: { noInfo: true }
   })
+}
+
+function dontWatch(pattern) {
+  return {
+    pattern,
+    included: true,
+    served: true,
+    watched: false
+  }
 }

@@ -1,16 +1,12 @@
 /* eslint-disable camelcase */
 import { prop } from 'ramda'
-import sinon from 'sinon'
+import td from 'testdouble'
 
 import { callApi, tranformCallDescriptor } from '../api'
 
 describe('callApi', () => {
-  let dispatch = null
-  let onSuccess = null
-
-  beforeEach(() => {
-    dispatch = sinon.stub()
-  })
+  const dispatch = td.func('dispatch')
+  const onSuccess = td.func('onSuccess')
 
   function api(callDescriptor) {
     const callbacks = { onSuccess }
@@ -23,14 +19,14 @@ describe('callApi', () => {
       const payload = { error: false }
 
       beforeEach(() => {
-        dispatch.returns(Promise.resolve(payload))
+        td.when(dispatch(td.matchers.anything()))
+          .thenReturn(Promise.resolve(payload))
       })
 
+      // eslint-disable-next-line arrow-body-style
       it('calls the success callback', () => {
-        onSuccess = sinon.spy()
-
         return api({}).then(() => {
-          expect(onSuccess).to.have.been.called
+          td.verify(onSuccess(payload, dispatch))
         })
       })
     })
@@ -38,11 +34,7 @@ describe('callApi', () => {
 })
 
 describe('tranformCallDescriptor', () => {
-  let getJson = null
-
-  beforeEach(() => {
-    getJson = sinon.stub()
-  })
+  const getJson = td.func('getJson')
 
   function apiAction(callDescriptor) {
     return tranformCallDescriptor(callDescriptor, { getJson })
@@ -121,7 +113,7 @@ describe('tranformCallDescriptor', () => {
         const response = { foo_bar: 42 }
         const action = apiAction(callDescriptor)
 
-        getJson.withArgs(rawResponse).returns(Promise.resolve(response))
+        td.when(getJson(rawResponse)).thenReturn(Promise.resolve(response))
 
         const actual = action.types[1].payload(null, null, rawResponse)
 
@@ -131,7 +123,7 @@ describe('tranformCallDescriptor', () => {
       it('camelizes payload keys on FAILURE', () => {
         const response = { last_name: 'Smith' }
 
-        getJson.withArgs(rawResponse).returns(Promise.resolve(response))
+        td.when(getJson(rawResponse)).thenReturn(Promise.resolve(response))
         const action = apiAction(callDescriptor)
         const apiError = action.types[2].payload(null, null, rawResponse)
         const actual = apiError.then(prop('response'))
@@ -152,7 +144,7 @@ describe('tranformCallDescriptor', () => {
           }
         }
 
-        getJson.withArgs(rawResponse).returns(Promise.resolve(response))
+        td.when(getJson(rawResponse)).thenReturn(Promise.resolve(response))
         const action = apiAction(callDescriptor)
         const actual = action.types[1].payload(null, null, rawResponse)
 

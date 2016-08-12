@@ -84,9 +84,8 @@
     "sass-lint": "^1.8.0",
     "sass-loader": "^3.2.0",
     "sasslint-webpack-plugin": "^1.0.3",
-    "sinon": "=2.0.0-pre",
-    "sinon-chai": "sjmulder/sinon-chai#pr/sinon-2.0.0-pre",
     "style-loader": "^0.13.1",
+    "testdouble": "^1.4.3",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "1.14.0"
