@@ -15,7 +15,7 @@ module.exports = function setKarmaConfig(config) {
     concurrency: Infinity,
     files: [specHelper, testGlob].map(dontWatch),
     // files: [testGlob, srcGlob],
-    frameworks: ['mocha', 'chai-as-promised', 'chai', 'testdouble'],
+    frameworks: ['mocha', 'chai-as-promised', 'chai'],
     logLevel: config.LOG_INFO,
     port: 9876,
     preprocessors: {
