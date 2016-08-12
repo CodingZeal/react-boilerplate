@@ -64,6 +64,7 @@
     "karma-chai-as-promised": "^0.1.2",
     "karma-chrome-launcher": "^1.0.1",
     "karma-mocha": "^1.1.1",
+    "karma-testdouble": "^1.0.2",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.5.3",
     "node-sass": "^3.7.0",
