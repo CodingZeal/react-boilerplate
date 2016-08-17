@@ -23,7 +23,7 @@ module.exports = function setKarmaConfig(config) {
       watched: false,
       served: true,
       included: true
-    }, testGlob],
+    }],
     frameworks: ['mocha', 'chai-as-promised', 'chai'],
     logLevel: config.LOG_INFO,
     port: 9876,
