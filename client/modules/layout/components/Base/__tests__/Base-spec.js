@@ -11,12 +11,12 @@ describe('Base', () => {
 
   it('renders the root element as a div by default', () => {
     expectReactShallow(<Base type='grid-block' />)
-      .to.have.rendered(<div></div>)
+      .to.have.rendered(<div />)
   })
 
   it('renders the root element specified by elementType', () => {
     expectReactShallow(<Base elementType='span' type='grid-block' />)
-      .to.have.rendered(<span></span>)
+      .to.have.rendered(<span />)
   })
 
   it('renders children within the root element', () => {
