@@ -11,8 +11,8 @@
     "lint:sass": "NODE_ENV=production sass-lint -v --max-warnings 0",
     "postinstall": "npm prune && npm run build",
     "starterapp": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback",
-    "test": "NODE_ENV=test karma start",
-    "test:watch": "npm test -- --auto-watch --no-single-run",
+    "test": "karma start",
+    "test:watch": "npm test -- --auto-watch --no-single-run --reporters progress",
     "validate": "npm-run-all --parallel test lint"
   },
   "repository": {
@@ -91,6 +91,13 @@
     "webpack-dev-server": "1.14.0"
   },
   "babel": {
+    "env": {
+      "test": {
+        "plugins": [
+          ["__coverage__", {"ignore": "**/*-spec.js"}]
+        ]
+      }
+    },
     "presets": [
       "react",
       "es2015",
@@ -99,5 +106,11 @@
     "plugins": [
       "transform-decorators-legacy"
     ]
+  },
+  "devDependencies": {
+    "babel-plugin-__coverage__": "^11.0.0",
+    "istanbul": "^0.4.4",
+    "karma-coverage": "^1.1.0",
+    "karma-mocha-reporter": "^2.0.4"
   }
 }

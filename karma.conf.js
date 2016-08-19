@@ -4,7 +4,6 @@ const webpackConfig = require('./webpack.config')
 process.env.BABEL_ENV = 'test' // so we load the correct babel plugins
 const specHelper = '__tests__/specHelper.js'
 const testGlob = '**/*-spec.js'
-// const srcGlob = '**/*!(-spec).js'
 
 module.exports = function setKarmaConfig(config) {
   config.set({
@@ -13,17 +12,22 @@ module.exports = function setKarmaConfig(config) {
     browsers: ['Chrome'],
     colors: true,
     concurrency: Infinity,
+    coverageReporter: {
+      reporters: [
+        { type: 'lcov', dir: '../coverage/', subdir: '.' },
+        { type: 'json', dir: '../coverage/', subdir: '.' },
+        { type: 'text-summary' }
+      ]
+    },
     files: [specHelper, testGlob].map(dontWatch),
-    // files: [testGlob, srcGlob],
     frameworks: ['mocha', 'chai-as-promised', 'chai'],
     logLevel: config.LOG_INFO,
     port: 9876,
     preprocessors: {
       [specHelper]: ['webpack'],
-      [testGlob]: ['webpack'] // ,
-      // [srcGlob]: ['webpack']
+      [testGlob]: ['webpack']
     },
-    reporters: ['progress'],
+    reporters: ['mocha', 'coverage'],
     singleRun: true,
     webpack: webpackConfig,
     webpackMiddleware: { noInfo: true }
