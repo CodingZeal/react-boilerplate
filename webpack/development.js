@@ -1,4 +1,5 @@
 const config = require('./base')
+const DashboardPlugin = require('webpack-dashboard/plugin')
 
 config.entry.client.unshift(
   'webpack-dev-server/client?http://localhost:8080',
@@ -20,5 +21,7 @@ config.module.loaders.push({
 })
 
 config.output.publicPath = 'http://localhost:8080/'
+
+config.plugins.push(new DashboardPlugin())
 
 module.exports = config
