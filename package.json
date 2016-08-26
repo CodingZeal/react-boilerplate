@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production ./node_modules/.bin/webpack",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --history-api-fallback",
+    "dev": "webpack-dashboard -- webpack-dev-server --devtool eval --progress --colors --hot --history-api-fallback",
     "lint": "npm-run-all --parallel lint:*",
     "lint:js": "NODE_ENV=production eslint 'client/**/*.js' --max-warnings 0",
     "lint:sass": "NODE_ENV=production sass-lint -v --max-warnings 0",
@@ -88,6 +88,7 @@
     "testdouble": "^1.4.3",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
+    "webpack-dashboard": "^0.1.8",
     "webpack-dev-server": "1.14.0"
   },
   "babel": {
