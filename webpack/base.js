@@ -48,6 +48,6 @@ module.exports = {
   ],
   resolve: {
     root: path.resolve(__dirname, '../client'),
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.scss']
   }
 }
