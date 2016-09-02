@@ -1,5 +1,7 @@
 # react-boilerplate
 
+[![CircleCI](https://circleci.com/gh/CodingZeal/react-boilerplate.svg?style=shield&circle-token=85b2758e5242f196abb90a032e29653b761ae335)](https://circleci.com/gh/CodingZeal/react-boilerplate)
+
 Zeal's boilerplate setup for React/Redux projects.
 
 This boilerplate contains our standard React/Redux setup for larger single-page front-end applications.
