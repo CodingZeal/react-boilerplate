@@ -10,7 +10,7 @@
     "lint:js": "NODE_ENV=production eslint 'client/**/*.js' --max-warnings 0",
     "lint:sass": "NODE_ENV=production sass-lint -v --max-warnings 0",
     "postinstall": "npm prune && npm run build",
-    "starterapp": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback",
+    "start": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback --open",
     "test": "NODE_ENV=test karma start",
     "test:watch": "npm test -- --auto-watch --no-single-run --reporters progress",
     "validate": "npm-run-all --parallel test lint"

@@ -16,7 +16,7 @@ We assume some familiarity with the React/Redux ecosystem, including Babel and W
 
 After creating the repository for your project, copy the files from this repo into your working directory.  Be careful not to overwrite your `README.md` or `.gitignore`.  You may want to merge the boilerplate's `.gitignore` with your own.  Make sure you copy `.eslintrc`; that one's easy to miss when copying from the command-line, since it's a hidden file.
 
-We've included an extremely simple starter application in the boilerplate.  To try it out, run `npm run starterapp` and navigate to `localhost:8080` in your browser.  You should see a heading that says `Zeal React Boilerplate Test`.  If you look in the browser's console, you should see a message indicating that Hot Module Replacement is enabled.
+We've included an extremely simple starter application in the boilerplate.  To try it out, run `npm start`.  It will start the Webpack development server and open the application in your browser.  You should see a heading that says `Zeal React Boilerplate Test`.  If you look in the browser's console, you should see a message indicating that Hot Module Replacement is enabled.
 
 The boilerplate is structured in modules, as described in [Rules For Structuring (Redux) Applications](http://jaysoo.ca/2016/02/28/organizing-redux-application/). The `sample` module can be duplicated and modified for other features as needed.
 
@@ -26,7 +26,7 @@ Once you've got your front-end application embedded into your real back-end serv
 
 * Delete `index.html`
 * Delete `webpack/starterApp.js`
-* Delete the `starterapp` script line from `package.json`
+* Delete the `start` script line from `package.json`
 * Change the contents of `client/modules/app/components/App/index.js` and the `client/modules/sample` module as appropriate for your application.
 
 ## Notes of Interest
