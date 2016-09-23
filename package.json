@@ -78,7 +78,7 @@
     "react-router-redux": "^4.0.5",
     "redux": "^3.5.2",
     "redux-api-middleware": "^1.0.2",
-    "redux-form": "^5.3.3",
+    "redux-form": "^6.0.5",
     "redux-thunk": "^2.1.0",
     "sass-lint": "^1.8.0",
     "sass-loader": "^4.0.1",
@@ -88,7 +88,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dashboard": "^0.1.8",
-    "webpack-dev-server": "1.15.1"
+    "webpack-dev-server": "1.16.1"
   },
   "babel": {
     "env": {
