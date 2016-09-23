@@ -12,7 +12,9 @@ const propTypes = {
 
 export default function Router({ history }) {
   return (
-    <ReactRouter children={appRoutes} history={history} />
+    <ReactRouter history={history}>
+      {appRoutes}
+    </ReactRouter>
   )
 }
 
