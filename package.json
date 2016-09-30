@@ -10,6 +10,7 @@
     "lint:js": "NODE_ENV=production eslint 'client/**/*.js' --max-warnings 0",
     "lint:sass": "NODE_ENV=production sass-lint -v --max-warnings 0",
     "postinstall": "npm prune && npm run build",
+    "prepush": "opt --out prepush --exec 'npm run validate'",
     "start": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback --open",
     "test": "NODE_ENV=test karma start",
     "test:watch": "npm test -- --auto-watch --no-single-run --reporters progress",
@@ -56,6 +57,7 @@
     "flux-standard-action": "^0.6.0",
     "foundation-apps": "^1.2.0",
     "humps": "^1.1.0",
+    "husky": "^0.11.8",
     "imports-loader": "^0.6.5",
     "json-loader": "^0.5.4",
     "karma": "^1.1.0",
@@ -67,6 +69,7 @@
     "mocha": "^3.0.2",
     "node-sass": "^3.7.0",
     "npm-run-all": "^3.1.0",
+    "opt-cli": "^1.5.1",
     "ramda": "^0.22.1",
     "react": "^15.1.0",
     "react-addons-test-utils": "^15.1.0",
@@ -94,7 +97,12 @@
     "env": {
       "test": {
         "plugins": [
-          ["__coverage__", {"ignore": "**/*-spec.js"}]
+          [
+            "__coverage__",
+            {
+              "ignore": "**/*-spec.js"
+            }
+          ]
         ]
       }
     },
