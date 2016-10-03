@@ -10,6 +10,7 @@
     "lint:js": "NODE_ENV=production eslint 'client/**/*.js' --max-warnings 0",
     "lint:sass": "NODE_ENV=production sass-lint -v --max-warnings 0",
     "postinstall": "npm prune && npm run build",
+    "prepush": "opt --out prepush --exec 'npm run validate'",
     "start": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback --open",
     "test": "NODE_ENV=test karma start",
     "test:watch": "npm test -- --auto-watch --no-single-run --reporters progress",
@@ -26,23 +27,23 @@
   "author": "Randy Coulman <randy@codingzeal.com> (http://codingzeal.com)",
   "license": "MIT",
   "engines": {
-    "node": "6.2.0",
-    "npm": "3.8.9"
+    "node": "6.7.0",
+    "npm": "3.10.3"
   },
   "private": true,
   "dependencies": {
-    "babel-core": "^6.9.1",
+    "babel-core": "^6.16.0",
     "babel-eslint": "^7.0.0",
-    "babel-loader": "^6.2.4",
+    "babel-loader": "^6.2.5",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.5.0",
-    "babel-preset-stage-0": "^6.5.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-1": "^6.16.0",
     "chai": "^3.4.1",
     "chai-as-promised": "^5.3.0",
     "classnames": "^2.2.5",
     "css-loader": "^0.25.0",
-    "es6-promise": "^3.2.1",
+    "es6-promise": "^4.0.3",
     "eslint": "^3.7.0",
     "eslint-config-zeal": "^0.12.0",
     "eslint-import-resolver-webpack": "^0.6.0",
@@ -56,52 +57,59 @@
     "flux-standard-action": "^0.6.0",
     "foundation-apps": "^1.2.0",
     "humps": "^1.1.0",
+    "husky": "^0.11.8",
     "imports-loader": "^0.6.5",
     "json-loader": "^0.5.4",
-    "karma": "^1.1.0",
+    "karma": "^1.3.0",
     "karma-chai": "^0.1.0",
     "karma-chai-as-promised": "^0.1.2",
     "karma-chrome-launcher": "^2.0.0",
-    "karma-mocha": "^1.1.1",
-    "karma-webpack": "^1.7.0",
-    "mocha": "^3.0.2",
-    "node-sass": "^3.7.0",
+    "karma-mocha": "^1.2.0",
+    "karma-webpack": "^1.8.0",
+    "mocha": "^3.1.0",
+    "node-sass": "^3.10.1",
     "npm-run-all": "^3.1.0",
+    "opt-cli": "^1.5.1",
     "ramda": "^0.22.1",
-    "react": "^15.1.0",
-    "react-addons-test-utils": "^15.1.0",
-    "react-dom": "^15.1.0",
+    "react": "^15.3.2",
+    "react-addons-test-utils": "^15.3.2",
+    "react-dom": "^15.3.2",
     "react-hot-loader": "^1.3.0",
     "react-redux": "=4.4.3",
-    "react-router": "^2.4.0",
+    "react-router": "^2.8.1",
     "react-router-named-routes": "0.0.12",
-    "react-router-redux": "^4.0.5",
-    "redux": "^3.5.2",
+    "react-router-redux": "^4.0.6",
+    "redux": "^3.6.0",
     "redux-api-middleware": "^1.0.2",
-    "redux-form": "^5.3.3",
+    "redux-form": "^6.0.5",
     "redux-thunk": "^2.1.0",
-    "sass-lint": "^1.8.0",
-    "sass-loader": "^4.0.1",
-    "sasslint-webpack-plugin": "^1.0.3",
+    "sass-lint": "^1.9.1",
+    "sass-loader": "^4.0.2",
+    "sasslint-webpack-plugin": "^1.0.4",
     "style-loader": "^0.13.1",
-    "testdouble": "^1.4.3",
+    "testdouble": "^1.7.0",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.1",
-    "webpack-dashboard": "^0.1.8",
-    "webpack-dev-server": "1.16.1"
+    "webpack": "^1.13.2",
+    "webpack-dashboard": "^0.2.0",
+    "webpack-dev-server": "^1.16.1"
   },
   "babel": {
     "env": {
       "test": {
         "plugins": [
-          ["__coverage__", {"ignore": "**/*-spec.js"}]
+          [
+            "__coverage__",
+            {
+              "ignore": "**/*-spec.js"
+            }
+          ]
         ]
       }
     },
     "presets": [
+      "latest",
       "react",
-      "es2015",
-      "stage-0"
+      "stage-1"
     ],
     "plugins": [
       "transform-decorators-legacy"
@@ -109,8 +117,8 @@
   },
   "devDependencies": {
     "babel-plugin-__coverage__": "^11.0.0",
-    "istanbul": "^0.4.4",
+    "istanbul": "^0.4.5",
     "karma-coverage": "^1.1.0",
-    "karma-mocha-reporter": "^2.0.4"
+    "karma-mocha-reporter": "^2.2.0"
   }
 }

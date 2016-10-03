@@ -2,3 +2,5 @@ node_modules/
 public/
 .tmp/
 coverage/
+.opt-in
+.opt-out
