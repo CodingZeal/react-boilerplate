@@ -27,7 +27,7 @@
   "author": "Randy Coulman <randy@codingzeal.com> (http://codingzeal.com)",
   "license": "MIT",
   "engines": {
-    "node": "6.6.0",
+    "node": "6.7.0",
     "npm": "3.10.3"
   },
   "private": true,
