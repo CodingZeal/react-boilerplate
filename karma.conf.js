@@ -20,7 +20,7 @@ module.exports = function setKarmaConfig(config) {
       ]
     },
     files: [specHelper, testGlob].map(dontWatch),
-    frameworks: ['mocha', 'chai-as-promised', 'chai'],
+    frameworks: ['mocha', 'chai'],
     logLevel: config.LOG_INFO,
     port: 9876,
     preprocessors: {
