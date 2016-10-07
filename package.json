@@ -49,7 +49,7 @@
     "eslint-import-resolver-webpack": "^0.6.0",
     "eslint-loader": "^1.3.0",
     "eslint-plugin-import": "^2.0.0",
-    "eslint-plugin-react": "randycoulman/eslint-plugin-react#fix-spread-props-in-no-children-prop",
+    "eslint-plugin-react": "yannickcr/eslint-plugin-react#f227eb4",
     "expect-react-shallow": "^1.2.1",
     "exports-loader": "^0.6.2",
     "extract-text-webpack-plugin": "^1.0.1",
