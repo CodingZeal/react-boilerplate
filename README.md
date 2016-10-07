@@ -35,7 +35,7 @@ Once you've got your front-end application embedded into your real back-end serv
 
 ## ESLINT Configuration
 
-Included in `package.json` are eslint and supporting modules.  We include our own eslint configuration as a dependency; [eslint-config-zeal](https://github.com/CodingZeal/eslint-config-zeal).  The various build and dev scripts will use these configurations including of course the `lint` script.  We do also recommend that if you are using an editor or IDE that supports lint plugins that you install those plugins.  For the Atom editor we currently use the "[linter](https://atom.io/packages/linter)" and [linter-eslint](https://atom.io/packages/linter-eslint) plugins.
+Included in `package.json` are [eslint](https://github.com/eslint/eslint) and supporting modules.  Included is also Zeal's eslint configuration as a dependency; [eslint-config-zeal](https://github.com/CodingZeal/eslint-config-zeal).  The various build and dev scripts will use these configurations including of course the `lint` script.  It is also recommended that if you are using an editor or IDE that supports lint plugins that you install those plugins for the benefit of realtime linting.  For the Atom editor please see the [linter](https://atom.io/packages/linter) and [linter-eslint](https://atom.io/packages/linter-eslint) plugins.
 
 ## Recipes
 
