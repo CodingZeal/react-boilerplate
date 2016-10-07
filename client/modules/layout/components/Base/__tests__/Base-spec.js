@@ -20,8 +20,11 @@ describe('Base', () => {
   })
 
   it('renders children within the root element', () => {
-    expectReactShallow(<Base children={<h1>Test</h1>} type='grid-block' />)
-      .to.have.rendered(<div><h1>Test</h1></div>)
+    expectReactShallow(
+      <Base type='grid-block'>
+        <h1>Test</h1>
+      </Base>
+    ).to.have.rendered(<div><h1>Test</h1></div>)
   })
 
   it('converts the type prop to a foundation class name', () => {
