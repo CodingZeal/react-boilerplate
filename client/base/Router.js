@@ -1,20 +1,22 @@
 import React, { PropTypes } from 'react'
 import { Router as ReactRouter } from 'react-router'
-import { FixNamedRoutesSupport as allowNames } from 'react-router-named-routes'
+import useNamedRoutes from 'use-named-routes'
+import { syncHistoryWithStore } from 'react-router-redux'
 
-import { appRoutes } from 'modules/app'
-
-allowNames(appRoutes)
+import { appRoutes as routes } from 'modules/app'
 
 const propTypes = {
-  history: PropTypes.object.isRequired
+  history: PropTypes.func.isRequired
 }
 
-export default function Router({ history }) {
+export default function Router({ history, store }) {
+  const namedHistory = syncHistoryWithStore(
+    useNamedRoutes(history)({ routes }),
+    store
+  )
+
   return (
-    <ReactRouter history={history}>
-      {appRoutes}
-    </ReactRouter>
+    <ReactRouter history={namedHistory} routes={routes} />
   )
 }
 
