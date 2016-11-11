@@ -42,19 +42,17 @@ describe('tranformCallDescriptor', () => {
 
   describe('request method', () => {
     it('uses GET by default', () => {
-      expect(apiAction({}).method).to.eq('GET')
+      expect(apiAction({}).method).toEqual('GET')
     })
 
     it('can override the request method', () => {
-      expect(apiAction({ method: 'POST' }).method).to.eq('POST')
+      expect(apiAction({ method: 'POST' }).method).toEqual('POST')
     })
   })
 
   describe('headers', () => {
     it('adds a content-type header', () => {
-      expect(apiAction({}).headers).to.contain({
-        'Content-Type': 'application/json'
-      })
+      expect(apiAction({}).headers['Content-Type']).toBe('application/json')
     })
   })
 
@@ -63,14 +61,14 @@ describe('tranformCallDescriptor', () => {
       const body = { foo: 42 }
       const callDescriptor = { body }
 
-      expect(JSON.parse(apiAction(callDescriptor).body)).to.eql(body)
+      expect(JSON.parse(apiAction(callDescriptor).body)).toEqual(body)
     })
 
     it('converts body keys to snake_case', () => {
       const callDescriptor = { body: { fooBar: 42 } }
       const expected = { foo_bar: 42 }
 
-      expect(JSON.parse(apiAction(callDescriptor).body)).to.eql(expected)
+      expect(JSON.parse(apiAction(callDescriptor).body)).toEqual(expected)
     })
   })
 
@@ -80,7 +78,7 @@ describe('tranformCallDescriptor', () => {
         types: ['R', 'S', 'F']
       }
 
-      expect(apiAction(callDescriptor).types[1].type).eql('S')
+      expect(apiAction(callDescriptor).types[1].type).toEqual('S')
     })
 
     it('preserves SUCCESS and FAILURE actions as type descriptors', () => {
@@ -99,8 +97,8 @@ describe('tranformCallDescriptor', () => {
       }
       const action = apiAction(callDescriptor)
 
-      expect(action.types[1]).to.have.property('meta', 'SUCCESS')
-      expect(action.types[2]).to.have.property('meta', 'FAILURE')
+      expect(action.types[1].meta).toBe('SUCCESS')
+      expect(action.types[2].meta).toBe('FAILURE')
     })
 
     describe('payload transformation', () => {
@@ -117,7 +115,7 @@ describe('tranformCallDescriptor', () => {
 
         const actual = action.types[1].payload(null, null, rawResponse)
 
-        return expect(actual).to.become({ fooBar: 42 })
+        return actual.then(response => expect(response).toEqual({ fooBar: 42 }))
       })
 
       it('camelizes payload keys on FAILURE', () => {
@@ -128,7 +126,9 @@ describe('tranformCallDescriptor', () => {
         const apiError = action.types[2].payload(null, null, rawResponse)
         const actual = apiError.then(prop('response'))
 
-        return expect(actual).to.become({ lastName: 'Smith' })
+        return actual.then(
+          response => expect(response).toEqual({ lastName: 'Smith' })
+        )
       })
 
       it('booleanizes payload values on SUCCESS', () => {
@@ -148,16 +148,18 @@ describe('tranformCallDescriptor', () => {
         const action = apiAction(callDescriptor)
         const actual = action.types[1].payload(null, null, rawResponse)
 
-        return expect(actual).to.become({
-          hasHeader: false,
-          isTrue: true,
-          reallyTrue: true,
-          reallyFalse: false,
-          aString: 'test',
-          foo: {
-            nestedFalse: false,
-            nestedString: 'test'
-          }
+        return actual.then(response => {
+          expect(response).toEqual({
+            hasHeader: false,
+            isTrue: true,
+            reallyTrue: true,
+            reallyFalse: false,
+            aString: 'test',
+            foo: {
+              nestedFalse: false,
+              nestedString: 'test'
+            }
+          })
         })
       })
     })

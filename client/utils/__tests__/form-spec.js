@@ -1,3 +1,4 @@
+/* eslint-disable max-nested-callbacks */
 import td from 'testdouble'
 
 import { formApiAdapter } from '../form'
@@ -30,7 +31,9 @@ describe('formApiAdapter', () => {
     it('resolves with the api response', () => {
       const adapter = formApiAdapter(dispatch, actionCreator)
 
-      return expect(adapter(formValues)).to.become(payload)
+      return adapter(formValues).then(result => {
+        expect(result).toBe(payload)
+      })
     })
   })
 
@@ -59,7 +62,9 @@ describe('formApiAdapter', () => {
       it('rejects with api error on failure', () => {
         const adapter = formApiAdapter(dispatch, actionCreator)
 
-        return expect(adapter(formValues)).to.be.rejected
+        return adapter(formValues).catch(failure => {
+          expect(failure).toBeDefined()
+        })
       })
 
       it('formats the error payload', () => {
@@ -70,7 +75,7 @@ describe('formApiAdapter', () => {
         }
 
         return adapter(formValues).catch(failure =>
-          expect(failure).to.eql(expected)
+          expect(failure).toEqual(expected)
         )
       })
     })
@@ -94,14 +99,16 @@ describe('formApiAdapter', () => {
         const adapter = formApiAdapter(dispatch, actionCreator)
 
         // fails with a timeout if exception raised in promise, check console
-        return expect(adapter(formValues)).to.be.rejected
+        return adapter(formValues).catch(failure => {
+          expect(failure).toBeDefined()
+        })
       })
 
       it('wraps the full error payload in an ApiError', () => {
         const adapter = formApiAdapter(dispatch, actionCreator)
 
         return adapter(formValues).catch(failure =>
-          expect(failure).to.eql(payload)
+          expect(failure).toEqual(payload)
         )
       })
     })

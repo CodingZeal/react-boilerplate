@@ -2,8 +2,5 @@
   "extends": [
     "zeal/mocha",
     "zeal/chai"
-  ],
-  "globals": {
-    "chai": true
-  }
+  ]
 }

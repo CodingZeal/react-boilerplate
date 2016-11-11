@@ -28,35 +28,35 @@ describe('Base', () => {
   })
 
   it('converts the type prop to a foundation class name', () => {
-    expect(className(<Base type='grid-block' />)).to.include('grid-block')
+    expect(className(<Base type='grid-block' />)).toContain('grid-block')
   })
 
   it('converts the align prop to a foundation class name', () => {
     expect(className(<Base align='right' type='grid-block' />))
-      .to.include('align-right')
+      .toContain('align-right')
 
     expect(className(<Base align='left' type='grid-block' />))
-      .to.include('align-left')
+      .toContain('align-left')
   })
 
   it('converts the shrink prop to a foundation class name', () => {
     expect(className(<Base shrink type='grid-block' />))
-      .to.include('shrink')
+      .toContain('shrink')
   })
 
   it('converts the vertical prop to a foundation class name', () => {
     expect(className(<Base vertical type='grid-block' />))
-      .to.include('vertical')
+      .toContain('vertical')
   })
 
   it('combines multiple props into the correct foundation classes', () => {
     expect(className(<Base shrink vertical align='right' type='grid-block' />))
-      .to.include('align-right shrink vertical')
+      .toContain('align-right shrink vertical')
   })
 
   it('merges the provided className with generated foundation classes', () => {
     expect(className(
       <Base align='right' className='foo bar' type='grid-block' />
-    )).to.eq('grid-block foo bar align-right')
+    )).toEqual('grid-block foo bar align-right')
   })
 })
