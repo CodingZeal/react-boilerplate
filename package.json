@@ -27,8 +27,8 @@
   "author": "Randy Coulman <randy@codingzeal.com> (http://codingzeal.com)",
   "license": "MIT",
   "engines": {
-    "node": "6.7.0",
-    "npm": "3.10.3"
+    "node": "6.9.1",
+    "npm": "3.10.8"
   },
   "private": true,
   "dependencies": {
