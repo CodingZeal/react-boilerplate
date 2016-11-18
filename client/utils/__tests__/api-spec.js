@@ -107,15 +107,15 @@ describe('tranformCallDescriptor', () => {
       }
       const rawResponse = 'RAW RESPONSE'
 
-      it('camelizes payload keys on SUCCESS', () => {
+      it('camelizes payload keys on SUCCESS', async () => {
         const response = { foo_bar: 42 }
         const action = apiAction(callDescriptor)
 
         td.when(getJson(rawResponse)).thenReturn(Promise.resolve(response))
 
-        const actual = action.types[1].payload(null, null, rawResponse)
+        const actual = await action.types[1].payload(null, null, rawResponse)
 
-        return actual.then(response => expect(response).toEqual({ fooBar: 42 }))
+        expect(actual).toEqual({ fooBar: 42 })
       })
 
       it('camelizes payload keys on FAILURE', () => {
@@ -127,7 +127,7 @@ describe('tranformCallDescriptor', () => {
         const actual = apiError.then(prop('response'))
 
         return actual.then(
-          response => expect(response).toEqual({ lastName: 'Smith' })
+          res => expect(res).toEqual({ lastName: 'Smith' })
         )
       })
 
@@ -148,8 +148,8 @@ describe('tranformCallDescriptor', () => {
         const action = apiAction(callDescriptor)
         const actual = action.types[1].payload(null, null, rawResponse)
 
-        return actual.then(response => {
-          expect(response).toEqual({
+        return actual.then(res => {
+          expect(res).toEqual({
             hasHeader: false,
             isTrue: true,
             reallyTrue: true,

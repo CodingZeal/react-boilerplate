@@ -1,11 +1,20 @@
 import React from 'react'
-
-import Header from '..'
 import expectReactShallow from 'expect-react-shallow'
 
-test('Header', () => {
-  it('renders the root element as a div by default', () => {
+import Header from '..'
+import shallowRender from 'utils/shallowRender'
+
+describe('Header', () => {
+  function className(component) {
+    return shallowRender(component).props.className
+  }
+
+  test('renders the root element as a div by default', () => {
     expectReactShallow(<Header />)
-      .to.have.rendered(<div />)
+      .to.have.rendered(<h1 />)
+  })
+
+  test('renders header with the "heading" class', () => {
+    expect(className(<Header />)).toContain('heading')
   })
 })

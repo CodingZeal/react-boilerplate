@@ -12,9 +12,9 @@
     "postinstall": "npm prune && npm run build",
     "prepush": "opt --out prepush --exec 'npm run validate'",
     "start": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback --open",
-    "test": "jest --notify --verbose --no-cache",
-    "test:watch": "npm test -- --watch",
-    "test:coverage": "npm test -- --coverage",
+    "test": "jest",
+    "test:watch": "npm test -- --verbose --notify --watch",
+    "test:coverage": "npm test -- --verbose --coverage",
     "validate": "npm-run-all --parallel test lint"
   },
   "repository": {
@@ -97,12 +97,8 @@
       "text"
     ],
     "collectCoverageFrom": [
-      "**/client/**/*.js",
-      "!**/client/**/*-spec.js"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/public/"
+      "client/**/*.js",
+      "!client/**/*-spec.js"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/client/test/specHelper.js"
   },

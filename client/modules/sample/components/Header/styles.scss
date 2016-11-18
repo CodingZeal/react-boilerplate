@@ -4,8 +4,20 @@
 }
 
 .heading {
+  align-items: center;
   composes: zeal;
+  display: flex;
   margin: 50px;
   padding: 50px;
   text-align: center;
+}
+
+.logo {
+  height: auto;
+  max-width: 200px;
+}
+
+.logo,
+.title {
+  flex: 1;
 }
