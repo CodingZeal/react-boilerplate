@@ -28,12 +28,11 @@ describe('formApiAdapter', () => {
       td.when(dispatch(action)).thenReturn(Promise.resolve(payload))
     })
 
-    it('resolves with the api response', () => {
+    it('resolves with the api response', async () => {
       const adapter = formApiAdapter(dispatch, actionCreator)
+      const adapted = await adapter(formValues)
 
-      return adapter(formValues).then(result => {
-        expect(result).toBe(payload)
-      })
+      expect(adapted).toBe(payload)
     })
   })
 
@@ -59,24 +58,21 @@ describe('formApiAdapter', () => {
         td.when(dispatch(action)).thenReturn(Promise.resolve(payload))
       })
 
-      it('rejects with api error on failure', () => {
-        const adapter = formApiAdapter(dispatch, actionCreator)
-
-        return adapter(formValues).catch(failure => {
-          expect(failure).toBeDefined()
-        })
-      })
-
-      it('formats the error payload', () => {
+      it('rejects with formatted api error on failure', async () => {
         const adapter = formApiAdapter(dispatch, actionCreator)
         const expected = {
           firstName: 'FIRST NAME ERROR',
           lastName: 'LAST NAME ERROR'
         }
+        let error = null
 
-        return adapter(formValues).catch(failure =>
-          expect(failure).toEqual(expected)
-        )
+        try {
+          await adapter(formValues)
+        } catch (e) {
+          error = e
+        }
+
+        expect(error).toEqual(expected)
       })
     })
 
@@ -104,12 +100,17 @@ describe('formApiAdapter', () => {
         })
       })
 
-      it('wraps the full error payload in an ApiError', () => {
+      it('wraps the full error payload in an ApiError', async () => {
         const adapter = formApiAdapter(dispatch, actionCreator)
+        let error = null
 
-        return adapter(formValues).catch(failure =>
-          expect(failure).toEqual(payload)
-        )
+        try {
+          await adapter(formValues)
+        } catch (e) {
+          error = e
+        }
+
+        expect(error).toEqual(payload)
       })
     })
   })

@@ -8,6 +8,6 @@
     "import/resolver": "webpack"
   },
   "rules": {
-    "import/extensions": "off"
+    "import/extensions": ["warn", "never", { "scss": "always" }]
   }
 }

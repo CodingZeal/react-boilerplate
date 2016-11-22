@@ -2,6 +2,7 @@ import React from 'react'
 import expectReactShallow from 'expect-react-shallow'
 
 import Header from '..'
+import styles from '../styles.scss'
 import shallowRender from 'utils/shallowRender'
 
 describe('Header', () => {
@@ -15,6 +16,6 @@ describe('Header', () => {
   })
 
   test('renders header with the "heading" class', () => {
-    expect(className(<Header />)).toContain('heading')
+    expect(className(<Header />)).toContain(styles.heading)
   })
 })

@@ -118,20 +118,18 @@ describe('tranformCallDescriptor', () => {
         expect(actual).toEqual({ fooBar: 42 })
       })
 
-      it('camelizes payload keys on FAILURE', () => {
+      it('camelizes payload keys on FAILURE', async () => {
         const response = { last_name: 'Smith' }
 
         td.when(getJson(rawResponse)).thenReturn(Promise.resolve(response))
         const action = apiAction(callDescriptor)
         const apiError = action.types[2].payload(null, null, rawResponse)
-        const actual = apiError.then(prop('response'))
+        const actual = await apiError.then(prop('response'))
 
-        return actual.then(
-          res => expect(res).toEqual({ lastName: 'Smith' })
-        )
+        expect(actual).toEqual({ lastName: 'Smith' })
       })
 
-      it('booleanizes payload values on SUCCESS', () => {
+      it('booleanizes payload values on SUCCESS', async () => {
         const response = {
           has_header: 'false',
           is_true: 'true',
@@ -146,20 +144,18 @@ describe('tranformCallDescriptor', () => {
 
         td.when(getJson(rawResponse)).thenReturn(Promise.resolve(response))
         const action = apiAction(callDescriptor)
-        const actual = action.types[1].payload(null, null, rawResponse)
+        const actual = await action.types[1].payload(null, null, rawResponse)
 
-        return actual.then(res => {
-          expect(res).toEqual({
-            hasHeader: false,
-            isTrue: true,
-            reallyTrue: true,
-            reallyFalse: false,
-            aString: 'test',
-            foo: {
-              nestedFalse: false,
-              nestedString: 'test'
-            }
-          })
+        expect(actual).toEqual({
+          hasHeader: false,
+          isTrue: true,
+          reallyTrue: true,
+          reallyFalse: false,
+          aString: 'test',
+          foo: {
+            nestedFalse: false,
+            nestedString: 'test'
+          }
         })
       })
     })
