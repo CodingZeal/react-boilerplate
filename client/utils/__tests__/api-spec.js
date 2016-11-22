@@ -54,6 +54,31 @@ describe('tranformCallDescriptor', () => {
     it('adds a content-type header', () => {
       expect(apiAction({}).headers['Content-Type']).toBe('application/json')
     })
+
+    it('can override the Content-Type header', () => {
+      const action = {
+        headers: {
+          'Content-Type': 'text/plain'
+        }
+      }
+
+      expect(apiAction(action).headers).to.contain({
+        'Content-Type': 'text/plain'
+      })
+    })
+
+    it('merges in additional headers', () => {
+      const action = {
+        headers: {
+          Authorization: 'Bearer TOKEN'
+        }
+      }
+
+      expect(apiAction(action).headers).to.contain({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer TOKEN'
+      })
+    })
   })
 
   describe('body', () => {
