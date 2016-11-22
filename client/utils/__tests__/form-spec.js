@@ -91,15 +91,6 @@ describe('formApiAdapter', () => {
         td.when(dispatch(action)).thenReturn(Promise.resolve(payload))
       })
 
-      it('rejects the promise', () => {
-        const adapter = formApiAdapter(dispatch, actionCreator)
-
-        // fails with a timeout if exception raised in promise, check console
-        return adapter(formValues).catch(failure => {
-          expect(failure).toBeDefined()
-        })
-      })
-
       it('wraps the full error payload in an ApiError', async () => {
         const adapter = formApiAdapter(dispatch, actionCreator)
         let error = null
