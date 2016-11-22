@@ -62,9 +62,7 @@ describe('tranformCallDescriptor', () => {
         }
       }
 
-      expect(apiAction(action).headers).to.contain({
-        'Content-Type': 'text/plain'
-      })
+      expect(apiAction(action).headers['Content-Type']).toBe('text/plain')
     })
 
     it('merges in additional headers', () => {
@@ -74,7 +72,7 @@ describe('tranformCallDescriptor', () => {
         }
       }
 
-      expect(apiAction(action).headers).to.contain({
+      expect(apiAction(action).headers).toEqual({
         'Content-Type': 'application/json',
         Authorization: 'Bearer TOKEN'
       })
