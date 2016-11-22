@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
-import { Router, configureStore } from 'base'
+import { Router, configureStore, history } from 'base'
 
 es6promise.polyfill()
 
@@ -12,7 +12,7 @@ const store = configureStore()
 function renderApp() {
   ReactDOM.render(
     <Provider store={store}>
-      <Router store={store} />
+      <Router store={store} history={history} />
     </Provider>,
     document.getElementById('root')
   )
