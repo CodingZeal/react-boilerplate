@@ -13,7 +13,7 @@
     "prepush": "opt --out prepush --exec 'npm run validate'",
     "start": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback --open",
     "test": "jest",
-    "test:watch": "npm test -- --verbose --notify --watch",
+    "test:watch": "npm test -- --watch",
     "test:coverage": "npm test -- --verbose --coverage",
     "validate": "npm-run-all --parallel test lint"
   },
