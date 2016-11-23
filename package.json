@@ -44,7 +44,6 @@
     "babel-preset-stage-1": "^6.16.0",
     "classnames": "^2.2.5",
     "css-loader": "^0.26.0",
-    "es6-promise": "^4.0.5",
     "eslint": "^3.10.0",
     "eslint-config-zeal": "^0.13.0",
     "eslint-import-resolver-webpack": "^0.7.0",
