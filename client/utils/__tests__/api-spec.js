@@ -42,11 +42,11 @@ describe('tranformCallDescriptor', () => {
 
   describe('request method', () => {
     it('uses GET by default', () => {
-      expect(apiAction({}).method).toEqual('GET')
+      expect(apiAction({}).method).toBe('GET')
     })
 
     it('can override the request method', () => {
-      expect(apiAction({ method: 'POST' }).method).toEqual('POST')
+      expect(apiAction({ method: 'POST' }).method).toBe('POST')
     })
   })
 
@@ -101,7 +101,7 @@ describe('tranformCallDescriptor', () => {
         types: ['R', 'S', 'F']
       }
 
-      expect(apiAction(callDescriptor).types[1].type).toEqual('S')
+      expect(apiAction(callDescriptor).types[1].type).toBe('S')
     })
 
     it('preserves SUCCESS and FAILURE actions as type descriptors', () => {

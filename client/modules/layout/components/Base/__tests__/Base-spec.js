@@ -57,6 +57,6 @@ describe('Base', () => {
   it('merges the provided className with generated foundation classes', () => {
     expect(className(
       <Base align='right' className='foo bar' type='grid-block' />
-    )).toEqual('grid-block foo bar align-right')
+    )).toBe('grid-block foo bar align-right')
   })
 })
