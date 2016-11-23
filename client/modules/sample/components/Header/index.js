@@ -1,13 +1,15 @@
 import React from 'react'
 
-import styles from './styles'
+import styles from './styles.scss'
+import zealLogo from './zeal_logo.png'
 
 export default function Header() {
   return (
-    <div>
-      <h1 className={styles.heading}>
+    <h1 className={styles.heading}>
+      <img className={styles.logo} src={zealLogo} />
+      <span className={styles.title}>
         Zeal React Boilerplate Test
-      </h1>
-    </div>
+      </span>
+    </h1>
   )
 }

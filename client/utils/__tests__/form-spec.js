@@ -1,3 +1,4 @@
+/* eslint-disable max-nested-callbacks */
 import td from 'testdouble'
 
 import { formApiAdapter } from '../form'
@@ -27,10 +28,11 @@ describe('formApiAdapter', () => {
       td.when(dispatch(action)).thenReturn(Promise.resolve(payload))
     })
 
-    it('resolves with the api response', () => {
+    it('resolves with the api response', async () => {
       const adapter = formApiAdapter(dispatch, actionCreator)
+      const adapted = await adapter(formValues)
 
-      return expect(adapter(formValues)).to.become(payload)
+      expect(adapted).toBe(payload)
     })
   })
 
@@ -56,22 +58,21 @@ describe('formApiAdapter', () => {
         td.when(dispatch(action)).thenReturn(Promise.resolve(payload))
       })
 
-      it('rejects with api error on failure', () => {
-        const adapter = formApiAdapter(dispatch, actionCreator)
-
-        return expect(adapter(formValues)).to.be.rejected
-      })
-
-      it('formats the error payload', () => {
+      it('rejects with formatted api error on failure', async () => {
         const adapter = formApiAdapter(dispatch, actionCreator)
         const expected = {
           firstName: 'FIRST NAME ERROR',
           lastName: 'LAST NAME ERROR'
         }
+        let error = null
 
-        return adapter(formValues).catch(failure =>
-          expect(failure).to.eql(expected)
-        )
+        try {
+          await adapter(formValues)
+        } catch (e) {
+          error = e
+        }
+
+        expect(error).toEqual(expected)
       })
     })
 
@@ -90,19 +91,17 @@ describe('formApiAdapter', () => {
         td.when(dispatch(action)).thenReturn(Promise.resolve(payload))
       })
 
-      it('rejects the promise', () => {
+      it('wraps the full error payload in an ApiError', async () => {
         const adapter = formApiAdapter(dispatch, actionCreator)
+        let error = null
 
-        // fails with a timeout if exception raised in promise, check console
-        return expect(adapter(formValues)).to.be.rejected
-      })
+        try {
+          await adapter(formValues)
+        } catch (e) {
+          error = e
+        }
 
-      it('wraps the full error payload in an ApiError', () => {
-        const adapter = formApiAdapter(dispatch, actionCreator)
-
-        return adapter(formValues).catch(failure =>
-          expect(failure).to.eql(payload)
-        )
+        expect(error).toEqual(payload)
       })
     })
   })

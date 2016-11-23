@@ -42,19 +42,17 @@ describe('tranformCallDescriptor', () => {
 
   describe('request method', () => {
     it('uses GET by default', () => {
-      expect(apiAction({}).method).to.eq('GET')
+      expect(apiAction({}).method).toBe('GET')
     })
 
     it('can override the request method', () => {
-      expect(apiAction({ method: 'POST' }).method).to.eq('POST')
+      expect(apiAction({ method: 'POST' }).method).toBe('POST')
     })
   })
 
   describe('headers', () => {
     it('adds a content-type header', () => {
-      expect(apiAction({}).headers).to.contain({
-        'Content-Type': 'application/json'
-      })
+      expect(apiAction({}).headers['Content-Type']).toBe('application/json')
     })
 
     it('can override the Content-Type header', () => {
@@ -64,9 +62,7 @@ describe('tranformCallDescriptor', () => {
         }
       }
 
-      expect(apiAction(action).headers).to.contain({
-        'Content-Type': 'text/plain'
-      })
+      expect(apiAction(action).headers['Content-Type']).toBe('text/plain')
     })
 
     it('merges in additional headers', () => {
@@ -76,7 +72,7 @@ describe('tranformCallDescriptor', () => {
         }
       }
 
-      expect(apiAction(action).headers).to.contain({
+      expect(apiAction(action).headers).toEqual({
         'Content-Type': 'application/json',
         Authorization: 'Bearer TOKEN'
       })
@@ -88,14 +84,14 @@ describe('tranformCallDescriptor', () => {
       const body = { foo: 42 }
       const callDescriptor = { body }
 
-      expect(JSON.parse(apiAction(callDescriptor).body)).to.eql(body)
+      expect(JSON.parse(apiAction(callDescriptor).body)).toEqual(body)
     })
 
     it('converts body keys to snake_case', () => {
       const callDescriptor = { body: { fooBar: 42 } }
       const expected = { foo_bar: 42 }
 
-      expect(JSON.parse(apiAction(callDescriptor).body)).to.eql(expected)
+      expect(JSON.parse(apiAction(callDescriptor).body)).toEqual(expected)
     })
   })
 
@@ -105,7 +101,7 @@ describe('tranformCallDescriptor', () => {
         types: ['R', 'S', 'F']
       }
 
-      expect(apiAction(callDescriptor).types[1].type).eql('S')
+      expect(apiAction(callDescriptor).types[1].type).toBe('S')
     })
 
     it('preserves SUCCESS and FAILURE actions as type descriptors', () => {
@@ -124,8 +120,8 @@ describe('tranformCallDescriptor', () => {
       }
       const action = apiAction(callDescriptor)
 
-      expect(action.types[1]).to.have.property('meta', 'SUCCESS')
-      expect(action.types[2]).to.have.property('meta', 'FAILURE')
+      expect(action.types[1].meta).toBe('SUCCESS')
+      expect(action.types[2].meta).toBe('FAILURE')
     })
 
     describe('payload transformation', () => {
@@ -134,29 +130,29 @@ describe('tranformCallDescriptor', () => {
       }
       const rawResponse = 'RAW RESPONSE'
 
-      it('camelizes payload keys on SUCCESS', () => {
+      it('camelizes payload keys on SUCCESS', async () => {
         const response = { foo_bar: 42 }
         const action = apiAction(callDescriptor)
 
         td.when(getJson(rawResponse)).thenReturn(Promise.resolve(response))
 
-        const actual = action.types[1].payload(null, null, rawResponse)
+        const actual = await action.types[1].payload(null, null, rawResponse)
 
-        return expect(actual).to.become({ fooBar: 42 })
+        expect(actual).toEqual({ fooBar: 42 })
       })
 
-      it('camelizes payload keys on FAILURE', () => {
+      it('camelizes payload keys on FAILURE', async () => {
         const response = { last_name: 'Smith' }
 
         td.when(getJson(rawResponse)).thenReturn(Promise.resolve(response))
         const action = apiAction(callDescriptor)
         const apiError = action.types[2].payload(null, null, rawResponse)
-        const actual = apiError.then(prop('response'))
+        const actual = await apiError.then(prop('response'))
 
-        return expect(actual).to.become({ lastName: 'Smith' })
+        expect(actual).toEqual({ lastName: 'Smith' })
       })
 
-      it('booleanizes payload values on SUCCESS', () => {
+      it('booleanizes payload values on SUCCESS', async () => {
         const response = {
           has_header: 'false',
           is_true: 'true',
@@ -171,9 +167,9 @@ describe('tranformCallDescriptor', () => {
 
         td.when(getJson(rawResponse)).thenReturn(Promise.resolve(response))
         const action = apiAction(callDescriptor)
-        const actual = action.types[1].payload(null, null, rawResponse)
+        const actual = await action.types[1].payload(null, null, rawResponse)
 
-        return expect(actual).to.become({
+        expect(actual).toEqual({
           hasHeader: false,
           isTrue: true,
           reallyTrue: true,
