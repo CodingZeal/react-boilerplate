@@ -56,7 +56,7 @@
     "file-loader": "^0.9.0",
     "flux-standard-action": "^1.0.0",
     "foundation-apps": "^1.2.0",
-    "history": "3.2.1",
+    "history": "4.4.1",
     "humps": "^2.0.0",
     "husky": "^0.11.9",
     "imports-loader": "^0.6.5",
