@@ -12,8 +12,9 @@
     "postinstall": "npm prune && npm run build",
     "prepush": "opt --out prepush --exec 'npm run validate'",
     "start": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback --open",
-    "test": "NODE_ENV=test karma start",
-    "test:watch": "npm test -- --auto-watch --no-single-run --reporters progress",
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
+    "test:coverage": "npm test -- --verbose --coverage",
     "validate": "npm-run-all --parallel test lint"
   },
   "repository": {
@@ -27,97 +28,98 @@
   "author": "Randy Coulman <randy@codingzeal.com> (http://codingzeal.com)",
   "license": "MIT",
   "engines": {
-    "node": "6.7.0",
-    "npm": "3.10.3"
+    "node": "6.9.1",
+    "npm": "3.10.8"
   },
   "private": true,
   "dependencies": {
-    "babel-core": "^6.16.0",
-    "babel-eslint": "^7.0.0",
-    "babel-loader": "^6.2.5",
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.0",
+    "babel-loader": "^6.2.7",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-polyfill": "^6.16.0",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-1": "^6.16.0",
-    "chai": "^3.4.1",
-    "chai-as-promised": "^6.0.0",
     "classnames": "^2.2.5",
-    "css-loader": "^0.25.0",
-    "es6-promise": "^4.0.3",
-    "eslint": "^3.7.1",
-    "eslint-config-zeal": "^0.12.1",
-    "eslint-import-resolver-webpack": "^0.6.0",
-    "eslint-loader": "^1.3.0",
-    "eslint-plugin-import": "^2.0.0",
-    "eslint-plugin-react": "^6.4.0",
+    "css-loader": "^0.26.0",
+    "eslint": "^3.10.0",
+    "eslint-config-zeal": "^0.13.0",
+    "eslint-import-resolver-webpack": "^0.7.0",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.6.0",
     "expect-react-shallow": "^1.2.1",
     "exports-loader": "^0.6.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
-    "flux-standard-action": "^0.6.0",
+    "flux-standard-action": "^1.0.0",
     "foundation-apps": "^1.2.0",
+    "history": "3.2.1",
     "humps": "^2.0.0",
-    "husky": "^0.11.8",
+    "husky": "^0.11.9",
     "imports-loader": "^0.6.5",
     "json-loader": "^0.5.4",
-    "karma": "^1.3.0",
-    "karma-chai": "^0.1.0",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-mocha": "^1.2.0",
-    "karma-webpack": "^1.8.0",
-    "mocha": "^3.1.0",
-    "node-sass": "^3.10.1",
-    "npm-run-all": "^3.1.0",
+    "node-sass": "^3.11.2",
+    "npm-run-all": "^3.1.1",
     "opt-cli": "^1.5.1",
     "ramda": "^0.22.1",
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-hot-loader": "^1.3.0",
-    "react-redux": "=4.4.3",
-    "react-router": "^2.8.1",
-    "react-router-named-routes": "0.0.12",
-    "react-router-redux": "^4.0.6",
+    "react-redux": "^4.4.4",
+    "react-router": "^3.0.0",
+    "react-router-redux": "^4.0.7",
     "redux": "^3.6.0",
     "redux-api-middleware": "^1.0.2",
-    "redux-form": "^6.0.5",
+    "redux-devtools-extension": "^1.0.0",
+    "redux-form": "^6.2.0",
     "redux-thunk": "^2.1.0",
-    "sass-lint": "^1.9.1",
+    "sass-lint": "^1.10.2",
     "sass-loader": "^4.0.2",
     "sasslint-webpack-plugin": "^1.0.4",
     "style-loader": "^0.13.1",
-    "testdouble": "^1.7.0",
+    "testdouble": "^1.9.0",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.2",
+    "use-named-routes": "^0.3.2",
+    "webpack": "^1.13.3",
     "webpack-dashboard": "^0.2.0",
-    "webpack-dev-server": "^1.16.1"
+    "webpack-dev-server": "^1.16.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "modulePaths": [
+      "<rootDir>/client/"
+    ],
+    "coverageReporters": [
+      "text"
+    ],
+    "collectCoverageFrom": [
+      "client/**/*.js",
+      "!client/**/*-spec.js"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/client/test/specHelper.js"
   },
   "babel": {
-    "env": {
-      "test": {
-        "plugins": [
-          [
-            "__coverage__",
-            {
-              "ignore": "**/*-spec.js"
-            }
-          ]
-        ]
-      }
-    },
     "presets": [
       "latest",
       "react",
       "stage-1"
     ],
     "plugins": [
-      "transform-decorators-legacy"
+      "transform-decorators-legacy",
+      "transform-runtime"
     ]
   },
   "devDependencies": {
-    "babel-plugin-__coverage__": "^11.0.0",
-    "istanbul": "^0.4.5",
-    "karma-coverage": "^1.1.0",
-    "karma-mocha-reporter": "^2.2.0"
+    "babel-jest": "^17.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^17.0.0",
+    "react-test-renderer": "^15.3.2"
   }
 }
