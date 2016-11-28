@@ -9,7 +9,10 @@ const extractCSS = new ExtractTextPlugin('vendor.css', {
 
 module.exports = {
   entry: {
-    client: [path.resolve(__dirname, '../client/index.js')]
+    client: [
+      'react-hot-loader/patch',
+      path.resolve(__dirname, '../client/index.js')
+    ]
   },
   module: {
     loaders: [
