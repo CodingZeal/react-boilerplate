@@ -9,12 +9,12 @@
     "lint": "npm-run-all --parallel lint:*",
     "lint:js": "NODE_ENV=production eslint 'client/**/*.js' --max-warnings 0",
     "lint:sass": "NODE_ENV=production sass-lint -v --max-warnings 0",
-    "postinstall": "npm prune && npm run build",
-    "prepush": "opt --out prepush --exec 'npm run validate'",
+    "postinstall": "yarn prune && yarn run build",
+    "prepush": "opt --out prepush --exec 'yarn run validate'",
     "start": "webpack-dev-server --config webpack/starterApp.js --devtool eval --progress --colors --hot --history-api-fallback --open",
     "test": "jest",
-    "test:watch": "npm test -- --watch",
-    "test:coverage": "npm test -- --verbose --coverage",
+    "test:watch": "yarn test -- --watch",
+    "test:coverage": "yarn test -- --verbose --coverage",
     "validate": "npm-run-all --parallel test lint"
   },
   "repository": {
