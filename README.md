@@ -33,6 +33,8 @@ Once you've got your front-end application embedded into your real back-end serv
 
 * We include `flux-standard-action` to indicate that our intention is to use that format for our actions.  We don't currently import it anywhere, but if you're so inclined, you can use its `isFSA()` function to check your actions in tests or as a guard in the reducer returned from `createReducer()`.
 
+* We use [husky](https://www.npmjs.com/package/husky) to provide a git pre-push hook that runs tests and linters before allowing a `git push`.  If you'd rather not have this, you can opt out of it permanently on your machine by creating a file named `.opt-out` with the line `prepush` in it.  See the [opt-cli](https://www.npmjs.com/package/opt-cli) package for more information.  If you want to temporarily skip the pre-push hook (for example, to push up a WIP commit), you can use `git push --no-verify` to skip the hook for that single push.
+
 ## ESLINT Configuration
 
 Included in `package.json` are [eslint](https://github.com/eslint/eslint) and supporting modules.  Included is also Zeal's eslint configuration as a dependency; [eslint-config-zeal](https://github.com/CodingZeal/eslint-config-zeal).  The various build and dev scripts will use these configurations including of course the `lint` script.  It is also recommended that if you are using an editor or IDE that supports lint plugins that you install those plugins for the benefit of realtime linting.  For the Atom editor please see the [linter](https://atom.io/packages/linter) and [linter-eslint](https://atom.io/packages/linter-eslint) plugins.
