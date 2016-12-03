@@ -82,7 +82,7 @@
     "sass-loader": "^4.0.2",
     "sasslint-webpack-plugin": "^1.0.4",
     "style-loader": "^0.13.1",
-    "testdouble": "^1.9.0",
+    "testdouble": "^1.9.1",
     "url-loader": "^0.5.7",
     "use-named-routes": "^0.3.2",
     "webpack": "^1.13.3",
