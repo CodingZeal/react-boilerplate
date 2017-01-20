@@ -1,5 +1,15 @@
 # react-boilerplate
 
+**DEPRECATION NOTICE**
+
+We have now migrated to a new boilerplate structure based on [Create React App](https://github.com/facebookincubator/create-react-app).
+
+See [generator-react-zeal](https://github.com/CodingZeal/generator-react-zeal) for our new approach.
+
+**This respository will no longer be maintained going forward.**
+
+Thanks for your interest!
+
 [![CircleCI](https://circleci.com/gh/CodingZeal/react-boilerplate.svg?style=shield&circle-token=85b2758e5242f196abb90a032e29653b761ae335)](https://circleci.com/gh/CodingZeal/react-boilerplate)
 
 Zeal's boilerplate setup for React/Redux projects.
